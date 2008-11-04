@@ -1,0 +1,28 @@
+`checkDateSuccession` <-
+function (d1, d2, pat, names = NA, lab = "") 
+{
+    if (is.na(names[1]) == TRUE) {
+        names <- c("Observation", "v1", "v2")
+    }
+    dat <- data.frame(cbind(d1, d2))
+    ind <- apply(abs(dat), 1, sum) > 0
+    ind <- ind * 1:length(d1)
+    ind <- ind[is.na(ind) == FALSE]
+    dat <- cbind(pat, dat)[ind, ]
+    dat2 <- data.frame(cbind(pat, cbind(as.character(d1), as.character(d2)))[ind, 
+        ])
+    dimnames(dat2)[[2]] <- names
+    res <- dat2[dat[, 2] > dat[, 3], ]
+    if (dim(res)[1] == 0) {
+        cat("No violations!")
+    }
+    if (dim(res)[1] > 0) {
+        xtab1 <- xtable(res, align = "lrrr", caption = paste("Observations with ", 
+            names[2], " > ", names[3], ".", sep = ""), label = lab)
+        xtab2 <- print(xtab1, include.rownames = FALSE, floating = FALSE, 
+            hline.after = c(-1, 0), type = "latex", size = "footnotesize", 
+            sanitize.text.function = function(x) {
+                x
+            }, tabular.environment = "longtable")
+    }
+}
