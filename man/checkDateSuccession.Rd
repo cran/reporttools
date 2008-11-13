@@ -12,7 +12,7 @@ checkDateSuccession(d1, d2, pat, names = NA, lab = "")
   \item{d1}{Supposedly earlier dates.}
   \item{d2}{Supposedly later dates.}
   \item{pat}{Corresponding list of patient (observation) numbers.}
-  \item{names}{Names of date vectors, of length 2.}
+  \item{names}{Names of date vectors, of length 3.}
   \item{lab}{Label of the generated latex table.}
 }
 \value{

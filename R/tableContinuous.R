@@ -1,7 +1,8 @@
 `tableContinuous` <-
 function (vars, nams, group = NA, subset = NA, disp.cols = c("n", 
     "min", "q1", "median", "mean", "q3", "max", "s", "iqr", "na"), 
-    prec = 1, col.tit = NA, print.pval = TRUE, cap = "", lab = "") 
+    prec = 1, col.tit = NA, print.pval = c("none", "anova", "kruskal")[1], 
+    cap = "", lab = "") 
 {
     dc <- c("n", "min", "q1", "median", "mean", "q3", "max", 
         "s", "iqr", "na")
@@ -60,12 +61,18 @@ function (vars, nams, group = NA, subset = NA, disp.cols = c("n",
             5]
         out[max(ind), 12] <- sum(is.na(vars[[i]]) == TRUE)
         ind1 <- n.levels > 1
-        ind2 <- print.pval == TRUE
+        ind2 <- print.pval %in% c("anova", "kruskal")
         ind3 <- min(unlist(lapply(splits, sum, na.rm = TRUE))) > 
             0
         if (ind1 * ind2 * ind3 == 1) {
+            if (print.pval == "anova") {
+                pval <- anova(lm(vars[[i]] ~ group))$"Pr(>F)"[1]
+            }
+            if (print.pval == "kruskal") {
+                pval <- kruskal.test(splits)$p.value
+            }
             out[(i - 1) * (n.levels + 1) + n.levels + 1, 1] <- paste("p = ", 
-                format.pval(kruskal.test(splits)$p.value), sep = "")
+                format.pval(pval), sep = "")
         }
     }
     align.disp.cols <- ""

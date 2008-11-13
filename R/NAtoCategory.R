@@ -6,8 +6,8 @@ function (fact, label = "missing")
         leve <- levels(fact)
         leve <- leve[leve != ""]
         res <- as.numeric(fact)
-        res[is.na(res) == TRUE] <- max(res, na.rm = TRUE) + 1
-        res <- factor(res, levels = names(table(res)), labels = c(leve, 
+        res[is.na(res) == TRUE] <- length(leve) + 1
+        res <- factor(res, levels = 1:(length(leve) + 1), labels = c(leve, 
             label))
     }
     return(res)

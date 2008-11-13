@@ -7,7 +7,8 @@ a list of nominal variables and a possible grouping variable (such as e.g. treat
 a Latex table of descriptive statistics separately per group and jointly for all observations, per variable. 
 }
 \usage{tableNominal(vars, nams, group, subset = NA, miss.cat = NA, 
-    print.pval = TRUE, vertical = TRUE, cap = "", lab = "")}
+    print.pval = c("none", "fisher", "chi2")[1], vertical = TRUE, 
+    cap = "", lab = "")}
 \arguments{
   \item{vars}{A list of nominal variables.}
   \item{nams}{A vector of strings, containing the names corresponding to the variables in \code{vars}. These are the names
@@ -15,8 +16,8 @@ a Latex table of descriptive statistics separately per group and jointly for all
   \item{group}{Grouping variable, may be omitted.}
   \item{subset}{Only consider a subset of observations.}
   \item{miss.cat}{Vector specifying the factors in \code{vars} that should have their \code{NA}s transformed to a separate category.}
-  \item{print.pval}{Give \eqn{p}-value of Fisher's exact test for a difference of distributions between groups, if 
-  there is more than one group.}
+  \item{print.pval}{Give \eqn{p}-value of Fisher's exact or \eqn{\chi^2} test for a difference of distributions between 
+  groups, if there is more than one group.}
   \item{vertical}{If \code{TRUE}, add vertical lines to the table, separating labels and groups, if applicable.}
   \item{cap}{The caption of the resulting Latex table.}
   \item{lab}{The label of the resulting Latex table.}
@@ -25,7 +26,7 @@ a Latex table of descriptive statistics separately per group and jointly for all
 \author{Kaspar Rufibach (maintainer), \email{kaspar.rufibach@gmail.com}}
 \references{
 Rufibach, K. (2008) 
-reporttools: R-Functions to Generate Latex - Tables of Descriptive Statistics.
+reporttools: R-Functions to Generate LaTeX Tables of Descriptive Statistics.
 Preprint, University of Zurich.
 }
 \examples{

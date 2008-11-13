@@ -28,7 +28,7 @@ tableDate(vars, nams, group = NA, subset = NA, disp.cols = c("n",
 \author{Kaspar Rufibach (maintainer), \email{kaspar.rufibach@gmail.com}}
 \references{
 Rufibach, K. (2008) 
-reporttools: R-Functions to Generate Latex - Tables of Descriptive Statistics.
+reporttools: R-Functions to Generate LaTeX Tables of Descriptive Statistics.
 Preprint, University of Zurich.
 }
 \examples{

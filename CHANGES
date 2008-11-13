@@ -1,2 +1,10 @@
 reporttools_1.0.1
 ---------------------------------
+- added option simulate.p.value to Fisher
+  test in tableNominal
+- corrected some typos
+- corrected an error in NAtoCategory
+- added the function displayCI
+- generalized display2by2 to displayKbyC
+- added choice of tests in tableNominal,
+  tableContinuous

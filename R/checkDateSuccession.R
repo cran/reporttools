@@ -14,7 +14,7 @@ function (d1, d2, pat, names = NA, lab = "")
     dimnames(dat2)[[2]] <- names
     res <- dat2[dat[, 2] > dat[, 3], ]
     if (dim(res)[1] == 0) {
-        cat("No violations!")
+        cat("No violations!\n")
     }
     if (dim(res)[1] > 0) {
         xtab1 <- xtable(res, align = "lrrr", caption = paste("Observations with ", 

@@ -1,6 +1,7 @@
 `tableNominal` <-
 function (vars, nams, group = NA, subset = NA, miss.cat = NA, 
-    print.pval = TRUE, vertical = TRUE, cap = "", lab = "") 
+    print.pval = c("none", "fisher", "chi2")[1], vertical = TRUE, 
+    cap = "", lab = "") 
 {
     vert.lin <- "|"
     if (vertical == FALSE) {
@@ -59,13 +60,19 @@ function (vars, nams, group = NA, subset = NA, miss.cat = NA,
         out[ind, 2 + 3 * n.group + 2] <- c(tab2.s, sum(tab2.s))
         out[ind, 2 + 3 * n.group + 3] <- c(cumsum(tab2.s), NA)
         ind1 <- n.group > 1
-        ind2 <- print.pval == TRUE
+        ind2 <- print.pval %in% c("fisher", "chi2")
         ind3 <- length(levels(vars[[i]])) > 1
         ind4 <- 1 - max(unlist(lapply(lapply(splits, is.na), 
             sum)) == unlist(lapply(lapply(splits, is.na), length)))
         if (ind1 * ind2 * ind3 * ind4 == 1) {
-            out[max(ind), 1] <- paste("p = ", format.pval(fisher.test(vars[[i]], 
-                group)$p.value), sep = "")
+            if (print.pval == "fisher") {
+                pval <- fisher.test(vars[[i]], group, simulate.p.value = TRUE)$p.value
+            }
+            if (print.pval == "chi2") {
+                pval <- chisq.test(vars[[i]], group, correct = TRUE)$p.value
+            }
+            out[max(ind), 1] <- paste("p = ", format.pval(pval), 
+                sep = "")
         }
     }
     col.tit <- c("$n", "$\\%", "$\\sum \\%")

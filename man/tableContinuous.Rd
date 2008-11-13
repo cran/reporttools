@@ -9,8 +9,8 @@ a Latex table of descriptive statistics separately per group and jointly for all
 \usage{
 tableContinuous(vars, nams, group = NA, subset = NA, 
      disp.cols = c("n", "min", "q1", "median", "mean", "q3", "max", 
-     "s", "iqr", "na"), prec = 1, col.tit = NA, print.pval = TRUE, 
-     cap = "", lab = "")
+     "s", "iqr", "na"), prec = 1, col.tit = NA, print.pval = 
+     c("none", "anova", "kruskal")[1], cap = "", lab = "")
 }
 \arguments{
   \item{vars}{A list of continuous variables.}
@@ -22,8 +22,10 @@ tableContinuous(vars, nams, group = NA, subset = NA,
   one or more of the corresponding character strings. The order of columns to be displayed can be arbitrary.}
   \item{prec}{Specify number of decimals to be displayed.}
   \item{col.tit}{Specify titles of columns.}
-  \item{print.pval}{If \code{print.pval == TRUE}, \eqn{p}-values of a Mann-Whitney or Kruskal-Wallis 
-  test for a difference between groups are provided.}
+  \item{print.pval}{If \code{print.pval == "anova"}, a \eqn{p}-values for an analysis of variance for a location
+  difference between groups is added to the table. If \code{print.pval == "kruskal"} a \eqn{p}-value of a Kruskal-Wallis test
+  is given. If \code{group} has only two levels, the respective \eqn{p}-value of a \eqn{t}- or Mann-Whitney test
+  is provided. Only applies if \code{group} is provided.}
   \item{cap}{The caption of the resulting Latex table.}
   \item{lab}{The label of the resulting Latex table.}
 }
@@ -31,7 +33,7 @@ tableContinuous(vars, nams, group = NA, subset = NA,
 \author{Kaspar Rufibach (maintainer), \email{kaspar.rufibach@gmail.com}}
 \references{
 Rufibach, K. (2008) 
-reporttools: R-Functions to Generate Latex - Tables of Descriptive Statistics.
+reporttools: R-Functions to Generate LaTeX Tables of Descriptive Statistics.
 Preprint, University of Zurich.
 }
 \examples{
@@ -41,7 +43,7 @@ nams <- c("Var1", "Var2")
 group <- sample(c(rep("A", 50), rep("B", 50)))
 subset <- c(1:70, 91:100)
 tableContinuous(vars, nams, group, subset, disp.cols = c("n", "min", "median", 
-    "max", "iqr", "na"), prec = 1, col.tit = NA, print.pval = TRUE, 
+    "max", "iqr", "na"), prec = 1, col.tit = NA, print.pval = "kruskal", 
     cap = "Table of continuous variables.", lab = "tab: descr stat")
 }
 \keyword{manip}
