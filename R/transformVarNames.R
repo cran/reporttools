@@ -12,5 +12,5 @@ function (dat, name)
         out[i] <- paste(nams[i], space, "<- ", name, "$", nams[i], 
             sep = "")
     }
-    return(matrix(out, ncol = 1))
+    return(cat(matrix(out, ncol = 1), sep = "\n"))
 }

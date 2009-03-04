@@ -1,4 +1,15 @@
-reporttools_1.0.1
+reporttools_1.0.2 (March 4, 2009)
+---------------------------------
+- Changed input argument 'disp.cols' to 'stats' in tableContinuous
+  and tableDate, added possibility to specify own functions as statistics
+- Added option declare.zero to tableContinuous
+- In tableNominal, removed subscript in column titles if no group is provided
+- Corrected NAtoCategory to deal with missing factor levels
+- Corrected displayKbyC to properly deal with missing levels
+- Modified transformVarNames according to suggestion of S. Haile
+
+
+reporttools_1.0.1 (Nov 13, 2008)
 ---------------------------------
 - added option simulate.p.value to Fisher
   test in tableNominal

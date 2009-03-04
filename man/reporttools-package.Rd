@@ -12,20 +12,20 @@ writing reports of data analysis using Sweave.
 \tabular{ll}{
 Package: \tab reporttools\cr
 Type: \tab Package\cr
-Version: \tab 1.0.1\cr
-Date: \tab 2008-11-13\cr
+Version: \tab 1.0.2\cr
+Date: \tab 2009-03-04\cr
 Depends: \tab xtable\cr
 License: \tab GPL version 2 or newer\cr
 }
 At the beginning of data analysis, it is often useful to have tables of descriptive values for continuous and
-nominal variables available. This package provides such functions, where the output is a Latex table. The 
-functions are most efficiently used when generating reports combining Latex with R via Sweave.
+nominal variables available. This package provides such functions, where the output is a LaTeX table. The 
+functions are most efficiently used when generating reports combining LaTeX with R via Sweave.
 }
 \author{Kaspar Rufibach (maintainer), \email{kaspar.rufibach@gmail.com}}
 \references{
-Rufibach, K. (2008) 
+Rufibach, K. (2009) 
 reporttools: R-Functions to Generate LaTeX Tables of Descriptive Statistics.
-Preprint, University of Zurich.
+Journal of Statistical Software, to appear.
 }
 \keyword{manip}
 \keyword{character}

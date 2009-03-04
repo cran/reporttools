@@ -1,11 +1,14 @@
 `tableDate` <-
-function (vars, nams, group = NA, subset = NA, disp.cols = c("n", 
+function (vars, nams, group = NA, subset = NA, stats = c("n", 
     "min", "q1", "median", "mean", "q3", "max", "na"), col.tit = NA, 
-    print.pval = TRUE, cap = "", lab = "") 
+    print.pval = TRUE, cap = "", lab = "", disp.cols = NA) 
 {
+    if (identical(disp.cols, NA) == FALSE) {
+        stats <- disp.cols
+    }
     dc <- c("n", "min", "q1", "median", "mean", "q3", "max", 
         "na")
-    disp.cols.num <- pmatch(disp.cols, dc)
+    stats.num <- pmatch(stats, dc)
     for (i in 1:length(nams)) {
         nams[i] <- gsub("_", "\\\\_", as.character(nams[i]))
     }
@@ -19,7 +22,7 @@ function (vars, nams, group = NA, subset = NA, disp.cols = c("n",
         group <- rep(1, length(vars[[1]]))
     }
     if (max(is.na(col.tit) == TRUE) == 1) {
-        col.tit <- c("{\\bf Variable}", "{\\bf Levels}", "n", 
+        col.tit <- c("{\\bf Variable}", "{\\bf Levels}", "$n$", 
             "Min", "$q_1$", "$\\widetilde{x}$", "$\\bar{x}$", 
             "$q_3$", "Max", "\\#NA")
     }
@@ -51,22 +54,20 @@ function (vars, nams, group = NA, subset = NA, disp.cols = c("n",
                 format.pval(kruskal.test(splits)$p.value), sep = "")
         }
     }
-    align.disp.cols <- ""
-    disp.cols2 <- c(1:2, 2 + disp.cols.num)
-    for (i in 1:length(disp.cols.num)) {
-        align.disp.cols <- paste(align.disp.cols, "r", sep = "")
+    align.stats <- ""
+    stats2 <- c(1:2, 2 + stats.num)
+    for (i in 1:length(stats.num)) {
+        align.stats <- paste(align.stats, "r", sep = "")
     }
-    out2 <- out[, disp.cols2]
+    out2 <- out[, stats2]
     out2[((1:n.var) - 1) * (n.levels + 1) + 1, 1] <- nams
-    dimnames(out2)[[2]] <- c("{\\bf Variable}", "{\\bf Levels}", 
-        "n", "Min", "$q_1$", "$\\widetilde{x}$", "$\\bar{x}$", 
-        "$q_3$", "Max", "\\#NA")[disp.cols2]
+    dimnames(out2)[[2]] <- col.tit[stats2]
     tmp <- (n.levels + 1) * 1:n.var
     hlines <- sort(c(0, tmp - 1, rep(tmp, times = 2)))
     hlines <- hlines[1:(length(hlines) - 1)]
     if (n.levels > 1) {
         out2[, 2] <- rep(c(levels(group), "all"), times = n.var)
-        xtab1 <- xtable(out2, align = paste("lll", align.disp.cols, 
+        xtab1 <- xtable(out2, align = paste("lll", align.stats, 
             sep = ""), caption = cap, label = lab)
         xtab2 <- print(xtab1, include.rownames = FALSE, floating = FALSE, 
             type = "latex", hline.after = hlines, size = "footnotesize", 
@@ -76,7 +77,7 @@ function (vars, nams, group = NA, subset = NA, disp.cols = c("n",
     }
     if (n.levels == 1) {
         out3 <- out2[(1:n.var - 1) * 2 + 1, -2]
-        xtab1 <- xtable(out3, align = paste("ll", align.disp.cols, 
+        xtab1 <- xtable(out3, align = paste("ll", align.stats, 
             sep = ""), caption = cap, label = lab)
         xtab2 <- print(xtab1, include.rownames = FALSE, floating = FALSE, 
             type = "latex", size = "footnotesize", sanitize.text.function = function(x) {

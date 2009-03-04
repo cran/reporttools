@@ -7,11 +7,8 @@ function (dat)
     for (i in 1:c) {
         tmp[, i] <- as.numeric(dat[, i])
     }
-    compl <- sign(apply(tmp, 1, sum))
-    compl <- (1:n) * compl
-    incompl <- (1:n) * (is.na(compl) == TRUE)
-    incompl <- incompl[incompl > 0]
-    compl <- compl[is.na(compl) == FALSE]
-    return(list(complete = dat[compl, ], incomplete = dat[incompl, 
-        ]))
+    compl <- dat[complete.cases(dat) == TRUE, ]
+    incompl <- dat[complete.cases(dat) == FALSE, ]
+    res <- list(complete = compl, incomplete = incompl)
+    return(res)
 }

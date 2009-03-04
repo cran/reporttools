@@ -27,8 +27,8 @@ death <- as.Date(round(runif(10, min = 35000, max = 40000)),
     origin = "1899-12-30")
 
 ## check whether diagnosis was before death
-checkDateSuccession(diagnosis, death, 1:10, names = c("Pat", "diagnosis", "death"), 
-     lab = "tab: diag --> death") 
+checkDateSuccession(diagnosis, death, 1:10, names = c("Pat", 
+    "diagnosis", "death"), lab = "tab: diag --> death") 
 }
 
 \keyword{manip}

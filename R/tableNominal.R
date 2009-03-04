@@ -76,18 +76,16 @@ function (vars, nams, group = NA, subset = NA, miss.cat = NA,
         }
     }
     col.tit <- c("$n", "$\\%", "$\\sum \\%")
-    dimnames(out)[[2]] <- c("{\\bf Variable}", "{\\bf Levels}", 
-        paste(col.tit, "_{", rep(c(levels(group), "\\mathrm{all}"), 
-            each = 3), "}$", sep = ""))
     al <- paste("lll", vert.lin, "rrr", sep = "")
-    if (n.group > 1) {
-        for (i in 1:n.group) {
-            al <- paste(al, vert.lin, "rrr", sep = "")
-        }
-    }
     tmp <- cumsum(ns.level + 1)
     hlines <- sort(c(0, tmp - 1, rep(tmp, each = 2)))
     if (n.group > 1) {
+        dimnames(out)[[2]] <- c("{\\bf Variable}", "{\\bf Levels}", 
+            paste(col.tit, "_{", rep(c(levels(group), "\\mathrm{all}"), 
+                each = 3), "}$", sep = ""))
+        for (i in 1:n.group) {
+            al <- paste(al, vert.lin, "rrr", sep = "")
+        }
         xtab1 <- xtable(out, digits = c(rep(0, 3), rep(c(0, 1, 
             1), n.group + 1)), align = al, caption = cap, label = lab)
         xtab2 <- print(xtab1, include.rownames = FALSE, floating = FALSE, 
@@ -97,8 +95,11 @@ function (vars, nams, group = NA, subset = NA, miss.cat = NA,
             }, tabular.environment = "longtable")
     }
     if (n.group == 1) {
-        xtab1 <- xtable(out[, 1:5], digits = c(rep(0, 3), c(0, 
-            1, 1)), align = al, caption = cap, label = lab)
+        out <- out[, 1:5]
+        dimnames(out)[[2]] <- c("{\\bf Variable}", "{\\bf Levels}", 
+            paste(col.tit, "$", sep = ""))
+        xtab1 <- xtable(out, digits = c(rep(0, 3), c(0, 1, 1)), 
+            align = al, caption = cap, label = lab)
         xtab2 <- print(xtab1, include.rownames = FALSE, floating = FALSE, 
             type = "latex", hline.after = hlines, size = "footnotesize", 
             sanitize.text.function = function(x) {
