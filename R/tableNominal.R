@@ -1,8 +1,20 @@
 `tableNominal` <-
-function (vars, nams, group = NA, subset = NA, miss.cat = NA, 
-    print.pval = c("none", "fisher", "chi2")[1], vertical = TRUE, 
-    cap = "", lab = "") 
+function (vars, nams, weights = NA, subset = NA, group = NA, 
+    miss.cat = NA, print.pval = c("none", "fisher", "chi2")[1], 
+    vertical = TRUE, cap = "", lab = "") 
 {
+    n.var <- length(nams)
+    if (identical(subset, NA) == FALSE) {
+        if (identical(group, NA) == FALSE) {
+            group <- group[subset]
+        }
+        if (identical(weights, NA) == FALSE) {
+            weights <- weights[subset]
+        }
+        for (i in 1:n.var) {
+            vars[[i]] <- vars[[i]][subset]
+        }
+    }
     vert.lin <- "|"
     if (vertical == FALSE) {
         vert.lin <- ""
@@ -15,20 +27,30 @@ function (vars, nams, group = NA, subset = NA, miss.cat = NA,
             vars[[i]] <- NAtoCategory(vars[[i]], label = "missing")
         }
     }
-    if (max(is.na(subset) == FALSE) == 1) {
-        group <- group[subset]
-        for (v in 1:length(vars)) {
-            vars[[v]] <- vars[[v]][subset]
-        }
+    if (identical(group, NA) == TRUE) {
+        group <- rep(1, length(vars[[1]]))
     }
+    else {
+        group <- factor(group, exclude = NULL)
+        group <- as.factor(group)
+    }
+    if (identical(weights, NA) == TRUE) {
+        weights2 <- 1
+    }
+    if (identical(weights, NA) == FALSE) {
+        weights2 <- weights
+    }
+    for (i in 1:n.var) {
+        vars[[i]] <- rep(vars[[i]], times = weights2)
+    }
+    group <- rep(group, times = weights2)
     vars <- lapply(vars, factor)
-    if (max(is.na(group) == TRUE) == 1) {
+    if (identical(group, NA) == TRUE) {
         group <- rep(1, length(vars[[1]]))
     }
     group <- as.factor(group)
     ns.level <- unlist(lapply(lapply(vars, levels), length))
     n.group <- length(levels(group))
-    n.var <- length(nams)
     out <- matrix(NA, ncol = 2 + 3 * (n.group + 1), nrow = (sum(ns.level) + 
         n.var))
     out <- data.frame(out)

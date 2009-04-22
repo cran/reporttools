@@ -8,7 +8,7 @@
   \item{d}{Number of digits after the comma.}
 }
 \value{\item{t}{A character string containing the input number \eqn{n} formatted as specified by \eqn{d}.}}
-\author{Kaspar Rufibach (maintainer), \email{kaspar.rufibach@gmail.com}}
+\author{Kaspar Rufibach (maintainer), \email{kaspar.rufibach@ifspm.uzh.ch}, \cr \url{http://www.biostat.uzh.ch/aboutus/people/rufibach.html}}
 \examples{
 r <- pi
 disp(r)}

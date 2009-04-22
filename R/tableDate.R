@@ -1,10 +1,23 @@
 `tableDate` <-
-function (vars, nams, group = NA, subset = NA, stats = c("n", 
-    "min", "q1", "median", "mean", "q3", "max", "na"), col.tit = NA, 
-    print.pval = TRUE, cap = "", lab = "", disp.cols = NA) 
+function (vars, nams, weights = NA, subset = NA, group = NA, 
+    stats = c("n", "min", "q1", "median", "mean", "q3", "max", 
+        "na"), col.tit = NA, print.pval = TRUE, cap = "", lab = "", 
+    disp.cols = NA) 
 {
     if (identical(disp.cols, NA) == FALSE) {
         stats <- disp.cols
+    }
+    n.var <- length(nams)
+    if (identical(subset, NA) == FALSE) {
+        if (identical(group, NA) == FALSE) {
+            group <- group[subset]
+        }
+        if (identical(weights, NA) == FALSE) {
+            weights <- weights[subset]
+        }
+        for (i in 1:n.var) {
+            vars[[i]] <- vars[[i]][subset]
+        }
     }
     dc <- c("n", "min", "q1", "median", "mean", "q3", "max", 
         "na")
@@ -12,23 +25,32 @@ function (vars, nams, group = NA, subset = NA, stats = c("n",
     for (i in 1:length(nams)) {
         nams[i] <- gsub("_", "\\\\_", as.character(nams[i]))
     }
-    if (max(is.na(subset) == FALSE) == 1) {
-        group <- group[subset]
-        for (v in 1:length(vars)) {
-            vars[[v]] <- vars[[v]][subset]
-        }
-    }
-    if (max(is.na(group) == TRUE) == 1) {
-        group <- rep(1, length(vars[[1]]))
-    }
     if (max(is.na(col.tit) == TRUE) == 1) {
         col.tit <- c("{\\bf Variable}", "{\\bf Levels}", "$n$", 
             "Min", "$q_1$", "$\\widetilde{x}$", "$\\bar{x}$", 
             "$q_3$", "Max", "\\#NA")
     }
+    n.levels <- 1
+    if (identical(group, NA) == TRUE) {
+        group <- rep(1, length(vars[[1]]))
+    }
+    else {
+        group <- factor(group, exclude = NULL)
+        group <- as.factor(group)
+        n.levels <- length(levels(group))
+    }
+    if (identical(weights, NA) == TRUE) {
+        weights2 <- 1
+    }
+    if (identical(weights, NA) == FALSE) {
+        weights2 <- weights
+    }
+    for (i in 1:n.var) {
+        vars[[i]] <- rep(vars[[i]], times = weights2)
+    }
+    group <- rep(group, times = weights2)
     group <- as.factor(group)
     n.levels <- length(levels(group))
-    n.var <- length(nams)
     out <- matrix(NA, ncol = 10, nrow = (n.levels + 1) * n.var)
     out <- data.frame(out)
     if (n.levels == 1) {
@@ -43,11 +65,21 @@ function (vars, nams, group = NA, subset = NA, stats = c("n",
         for (j in 1:n.levels) {
             tmp <- splits[[j]]
             out[ind[j], 3] <- sum(is.na(tmp) == FALSE)
-            out[ind[j], 4:9] <- format(summary(tmp)[1:6])
+            out[ind[j], 4] <- format(min(tmp, na.rm = TRUE))
+            out[ind[j], 5] <- format(summary(tmp)[2])
+            out[ind[j], 6] <- format(summary(tmp)[3])
+            out[ind[j], 7] <- format(mean(tmp, na.rm = TRUE))
+            out[ind[j], 8] <- format(summary(tmp)[5])
+            out[ind[j], 9] <- format(max(tmp, na.rm = TRUE))
             out[ind[j], 10] <- sum(is.na(tmp) == TRUE)
         }
         out[max(ind), 3] <- sum(is.na(vars[[i]]) == FALSE)
-        out[max(ind), 4:9] <- format(summary(vars[[i]])[1:6])
+        out[max(ind), 4] <- format(min(vars[[i]], na.rm = TRUE))
+        out[max(ind), 5] <- format(summary(vars[[i]])[2])
+        out[max(ind), 6] <- format(summary(vars[[i]])[3])
+        out[max(ind), 7] <- format(mean(vars[[i]], na.rm = TRUE))
+        out[max(ind), 8] <- format(summary(vars[[i]])[5])
+        out[max(ind), 9] <- format(max(vars[[i]], na.rm = TRUE))
         out[max(ind), 10] <- sum(is.na(vars[[i]]) == TRUE)
         if ((n.levels > 1) && (print.pval == TRUE)) {
             out[(i - 1) * (n.levels + 1) + n.levels + 1, 1] <- paste("p = ", 

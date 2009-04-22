@@ -11,7 +11,7 @@ A unit can be additionally supplied.}
   \item{unit}{Character string denoting a unit of measurement.}
 }
 \value{A character string to be inserted in plain text.}
-\author{Kaspar Rufibach (maintainer), \email{kaspar.rufibach@gmail.com}}
+\author{Kaspar Rufibach (maintainer), \email{kaspar.rufibach@ifspm.uzh.ch}, \cr \url{http://www.biostat.uzh.ch/aboutus/people/rufibach.html}}
 \examples{
 a <- 0.05
 k <- qnorm(p = 1 - a / 2)

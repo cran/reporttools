@@ -1,38 +1,57 @@
 `tableContinuous` <-
-function (vars, nams, group = NA, subset = NA, stats = c("n", 
-    "min", "q1", "median", "mean", "q3", "max", "s", "iqr", "na"), 
-    prec = 1, col.tit = NA, print.pval = c("none", "anova", "kruskal")[1], 
-    declare.zero = 10^-10, cap = "", lab = "", disp.cols = NA) 
+function (vars, nams, weights = NA, subset = NA, group = NA, 
+    stats = c("n", "min", "q1", "median", "mean", "q3", "max", 
+        "s", "iqr", "na"), prec = 1, col.tit = NA, print.pval = c("none", 
+        "anova", "kruskal")[1], declare.zero = 10^-10, cap = "", 
+    lab = "", disp.cols = NA) 
 {
     if (identical(disp.cols, NA) == FALSE) {
         stats <- disp.cols
     }
+    n.var <- length(nams)
+    if (identical(subset, NA) == FALSE) {
+        if (identical(group, NA) == FALSE) {
+            group <- group[subset]
+        }
+        if (identical(weights, NA) == FALSE) {
+            weights <- weights[subset]
+        }
+        for (i in 1:n.var) {
+            vars[[i]] <- vars[[i]][subset]
+        }
+    }
     for (i in 1:length(nams)) {
         nams[i] <- gsub("_", "\\\\_", as.character(nams[i]))
-    }
-    if (max(is.na(subset) == FALSE) == 1) {
-        group <- group[subset]
-        for (v in 1:length(vars)) {
-            vars[[v]] <- vars[[v]][subset]
-        }
     }
     if (max(is.na(col.tit) == TRUE) == 1) {
         col.tit <- c("{\\bf Variable}", "{\\bf Levels}", "$n$", 
             "Min", "$q_1$", "$\\widetilde{x}$", "$\\bar{x}$", 
             "$q_3$", "Max", "$s$", "IQR", "\\#NA")
     }
-    group <- factor(group, exclude = NULL)
     n.levels <- 1
-    if (max(is.na(group) == 1) == 0) {
+    if (identical(group, NA) == TRUE) {
+        group <- rep(1, length(vars[[1]]))
+    }
+    else {
+        group <- factor(group, exclude = NULL)
         group <- as.factor(group)
         n.levels <- length(levels(group))
     }
+    if (identical(weights, NA) == TRUE) {
+        weights2 <- 1
+    }
+    if (identical(weights, NA) == FALSE) {
+        weights2 <- weights
+    }
+    for (i in 1:n.var) {
+        vars[[i]] <- rep(vars[[i]], times = weights2)
+    }
+    group <- rep(group, times = weights2)
     ncols <- length(stats)
     s1 <- unlist(lapply(stats, is.character))
     s1 <- (1:ncols)[s1]
     s2 <- unlist(lapply(stats, is.function))
     s2 <- (1:ncols)[s2]
-    n.var <- length(nams)
     out <- matrix(NA, ncol = 12, nrow = (n.levels + 1) * n.var)
     out <- data.frame(out)
     out.fct <- matrix(NA, ncol = length(s2), nrow = (n.levels + 
@@ -48,7 +67,12 @@ function (vars, nams, group = NA, subset = NA, stats = c("n",
             tmp <- as.vector(splits[[j]])
             if (sum(is.na(tmp) == FALSE) != 0) {
                 out[ind[j], 3] <- sum(is.na(tmp) == FALSE)
-                out[ind[j], 4:9] <- summary(tmp)[1:6]
+                out[ind[j], 4] <- min(tmp, na.rm = TRUE)
+                out[ind[j], 5] <- quantile(tmp, 0.25, na.rm = TRUE)
+                out[ind[j], 6] <- median(tmp, na.rm = TRUE)
+                out[ind[j], 7] <- mean(tmp, na.rm = TRUE)
+                out[ind[j], 8] <- quantile(tmp, 0.75, na.rm = TRUE)
+                out[ind[j], 9] <- max(tmp, na.rm = TRUE)
                 out[ind[j], 10] <- sd(tmp, na.rm = TRUE)
                 out[ind[j], 11] <- out[ind[j], 8] - out[ind[j], 
                   5]
@@ -63,7 +87,12 @@ function (vars, nams, group = NA, subset = NA, stats = c("n",
         }
         vi <- as.vector(vars[[i]])
         out[max(ind), 3] <- sum(is.na(vi) == FALSE)
-        out[max(ind), 4:9] <- summary(vi)[1:6]
+        out[max(ind), 4] <- min(vi, na.rm = TRUE)
+        out[max(ind), 5] <- quantile(vi, 0.25, na.rm = TRUE)
+        out[max(ind), 6] <- median(vi, na.rm = TRUE)
+        out[max(ind), 7] <- mean(vi, na.rm = TRUE)
+        out[max(ind), 8] <- quantile(vi, 0.75, na.rm = TRUE)
+        out[max(ind), 9] <- max(vi, na.rm = TRUE)
         out[max(ind), 10] <- sd(vi, na.rm = TRUE)
         out[max(ind), 11] <- out[max(ind), 8] - out[max(ind), 
             5]
