@@ -1,7 +1,10 @@
-`transformVarNames` <-
+transformVarNames <-
 function (dat, name) 
 {
     nams <- names(dat)
+    if (is.null(nams) == TRUE) {
+        nams <- dimnames(dat)[[1]]
+    }
     ns <- nchar(nams)
     out <- rep(NA, length(ns))
     for (i in 1:length(ns)) {

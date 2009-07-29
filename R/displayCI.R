@@ -1,6 +1,7 @@
-`displayCI` <-
+displayCI <-
 function (ci, digit = 2, unit = "") 
 {
+    ci <- format(round(ci, digit), nsmall = digit)
     d <- 1
     if (is.matrix(ci) == TRUE) {
         d <- nrow(ci)
@@ -10,8 +11,8 @@ function (ci, digit = 2, unit = "")
     }
     disp.ci <- rep(NA, d)
     for (i in 1:d) {
-        disp.ci[i] <- paste("[", disp(ci[i, 1], digit), unit, 
-            ", ", disp(ci[i, 2], digit), unit, "]", sep = "")
+        disp.ci[i] <- paste("[", ci[i, 1], unit, ", ", ci[i, 
+            2], unit, "]", sep = "")
     }
     return(disp.ci)
 }

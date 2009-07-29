@@ -1,11 +1,19 @@
-`tableDate` <-
-function (vars, nams, weights = NA, subset = NA, group = NA, 
-    stats = c("n", "min", "q1", "median", "mean", "q3", "max", 
-        "na"), col.tit = NA, print.pval = TRUE, cap = "", lab = "", 
-    disp.cols = NA) 
+tableDate <-
+function (vars, weights = NA, subset = NA, group = NA, stats = c("n", 
+    "min", "q1", "median", "mean", "q3", "max", "na"), col.tit = NA, 
+    print.pval = TRUE, cap = "", lab = "", font.size = "footnotesize", 
+    longtable = TRUE, disp.cols = NA, nams = NA) 
 {
     if (identical(disp.cols, NA) == FALSE) {
         stats <- disp.cols
+    }
+    if (is.data.frame(vars) == TRUE) {
+        tmp <- vars
+        vars <- list()
+        for (i in 1:ncol(tmp)) {
+            vars[[i]] <- tmp[, i]
+        }
+        nams <- colnames(tmp)
     }
     n.var <- length(nams)
     if (identical(subset, NA) == FALSE) {
@@ -96,24 +104,29 @@ function (vars, nams, weights = NA, subset = NA, group = NA,
     dimnames(out2)[[2]] <- col.tit[stats2]
     tmp <- (n.levels + 1) * 1:n.var
     hlines <- sort(c(0, tmp - 1, rep(tmp, times = 2)))
-    hlines <- hlines[1:(length(hlines) - 1)]
+    tab.env <- "longtable"
+    float <- FALSE
+    if (identical(longtable, FALSE)) {
+        tab.env <- "tabular"
+        float <- TRUE
+    }
     if (n.levels > 1) {
         out2[, 2] <- rep(c(levels(group), "all"), times = n.var)
         xtab1 <- xtable(out2, align = paste("lll", align.stats, 
             sep = ""), caption = cap, label = lab)
-        xtab2 <- print(xtab1, include.rownames = FALSE, floating = FALSE, 
-            type = "latex", hline.after = hlines, size = "footnotesize", 
+        xtab2 <- print(xtab1, include.rownames = FALSE, floating = float, 
+            type = "latex", hline.after = hlines, size = font.size, 
             sanitize.text.function = function(x) {
                 x
-            }, tabular.environment = "longtable")
+            }, tabular.environment = tab.env)
     }
     if (n.levels == 1) {
         out3 <- out2[(1:n.var - 1) * 2 + 1, -2]
         xtab1 <- xtable(out3, align = paste("ll", align.stats, 
             sep = ""), caption = cap, label = lab)
-        xtab2 <- print(xtab1, include.rownames = FALSE, floating = FALSE, 
-            type = "latex", size = "footnotesize", sanitize.text.function = function(x) {
+        xtab2 <- print(xtab1, include.rownames = FALSE, floating = float, 
+            type = "latex", size = font.size, sanitize.text.function = function(x) {
                 x
-            }, tabular.environment = "longtable")
+            }, tabular.environment = tab.env)
     }
 }

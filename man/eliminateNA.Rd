@@ -1,6 +1,6 @@
 \name{eliminateNA}
 \alias{eliminateNA}
-\title{Eliminate all observations with at least one NA in a dataframe}
+\title{Eliminate all observations with at least one NA in a data frame}
 \description{
 Generates two matrices: One with complete observations and one with all observations containing at least
 one missing value.

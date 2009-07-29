@@ -1,12 +1,20 @@
-`tableContinuous` <-
-function (vars, nams, weights = NA, subset = NA, group = NA, 
-    stats = c("n", "min", "q1", "median", "mean", "q3", "max", 
-        "s", "iqr", "na"), prec = 1, col.tit = NA, print.pval = c("none", 
-        "anova", "kruskal")[1], declare.zero = 10^-10, cap = "", 
-    lab = "", disp.cols = NA) 
+tableContinuous <-
+function (vars, weights = NA, subset = NA, group = NA, stats = c("n", 
+    "min", "q1", "median", "mean", "q3", "max", "s", "iqr", "na"), 
+    prec = 1, col.tit = NA, print.pval = c("none", "anova", "kruskal")[1], 
+    declare.zero = 10^-10, cap = "", lab = "", font.size = "footnotesize", 
+    longtable = TRUE, disp.cols = NA, nams = NA) 
 {
     if (identical(disp.cols, NA) == FALSE) {
         stats <- disp.cols
+    }
+    if (is.data.frame(vars) == TRUE) {
+        tmp <- vars
+        vars <- list()
+        for (i in 1:ncol(tmp)) {
+            vars[[i]] <- tmp[, i]
+        }
+        nams <- colnames(tmp)
     }
     n.var <- length(nams)
     if (identical(subset, NA) == FALSE) {
@@ -23,19 +31,10 @@ function (vars, nams, weights = NA, subset = NA, group = NA,
     for (i in 1:length(nams)) {
         nams[i] <- gsub("_", "\\\\_", as.character(nams[i]))
     }
-    if (max(is.na(col.tit) == TRUE) == 1) {
+    if (identical(col.tit, NA) == TRUE) {
         col.tit <- c("{\\bf Variable}", "{\\bf Levels}", "$n$", 
             "Min", "$q_1$", "$\\widetilde{x}$", "$\\bar{x}$", 
             "$q_3$", "Max", "$s$", "IQR", "\\#NA")
-    }
-    n.levels <- 1
-    if (identical(group, NA) == TRUE) {
-        group <- rep(1, length(vars[[1]]))
-    }
-    else {
-        group <- factor(group, exclude = NULL)
-        group <- as.factor(group)
-        n.levels <- length(levels(group))
     }
     if (identical(weights, NA) == TRUE) {
         weights2 <- 1
@@ -43,10 +42,16 @@ function (vars, nams, weights = NA, subset = NA, group = NA,
     if (identical(weights, NA) == FALSE) {
         weights2 <- weights
     }
+    n.levels <- 1
+    if (identical(group, NA) == FALSE) {
+        group <- factor(group, exclude = NULL)
+        group <- as.factor(group)
+        n.levels <- length(levels(group))
+        group <- rep(group, times = weights2)
+    }
     for (i in 1:n.var) {
         vars[[i]] <- rep(vars[[i]], times = weights2)
     }
-    group <- rep(group, times = weights2)
     ncols <- length(stats)
     s1 <- unlist(lapply(stats, is.character))
     s1 <- (1:ncols)[s1]
@@ -60,7 +65,7 @@ function (vars, nams, weights = NA, subset = NA, group = NA,
     for (i in 1:n.var) {
         ind <- (i - 1) * (n.levels + 1) + 1:(n.levels + 1)
         splits <- list(vars[[i]])
-        if (max(is.na(group) == 1) == 0) {
+        if (identical(group, NA) == FALSE) {
             splits <- split(vars[[i]], group)
         }
         for (j in 1:n.levels) {
@@ -144,39 +149,50 @@ function (vars, nams, weights = NA, subset = NA, group = NA,
         align.stats <- paste(align.stats, "r", sep = "")
     }
     if (n.levels == 1) {
-        prec <- c(rep(0, 2), rep(prec, ncols))
+        prec <- c(rep(0, 1), rep(prec, ncols))
         ali <- "ll"
         out2 <- out2[, -2]
     }
     if (n.levels > 1) {
-        prec <- c(rep(0, 3), rep(prec, ncols))
+        prec <- c(rep(0, 2), rep(prec, ncols))
         ali <- "lll"
     }
-    prec.ind <- dimnames(out2)[[2]] %in% c("n", "\\#NA")
-    prec.ind <- (1:length(prec.ind)) * prec.ind
-    prec.ind <- prec.ind[prec.ind > 0] + 1
-    prec[prec.ind] <- 0
+    for (c in 2:ncol(out2)) {
+        if ((all(out2[, c] == round(out2[, c]), na.rm = TRUE) == 
+            TRUE) & (all(is.na(out2[, c])) == FALSE)) {
+            out2[, c] <- format(out2[, c], nsmall = 0)
+        }
+        else {
+            out2[, c] <- format(round(out2[, c], prec[c]), nsmall = prec[c])
+        }
+    }
     tmp <- cumsum(rep(n.levels, n.var) + 1)
     hlines <- sort(c(0, tmp - 1, rep(tmp, 2)))
+    tab.env <- "longtable"
+    float <- FALSE
+    if (identical(longtable, FALSE)) {
+        tab.env <- "tabular"
+        float <- TRUE
+    }
     if (n.levels == 1) {
-        hlines <- 0
         out3 <- out2[(1:n.var - 1) * 2 + 1, ]
-        xtab3 <- xtable(out3, digits = prec, align = paste(ali, 
-            align.stats, sep = ""), caption = cap, label = lab)
-        xtab4 <- print(xtab3, include.rownames = FALSE, floating = FALSE, 
-            type = "latex", hline.after = hlines, size = "footnotesize", 
+        hlines <- c(0, rep(nrow(out3), 2))
+        xtab3 <- xtable(out3, align = paste(ali, align.stats, 
+            sep = ""), caption = cap, label = lab)
+        xtab4 <- print(xtab3, include.rownames = FALSE, floating = float, 
+            type = "latex", hline.after = hlines, size = font.size, 
             sanitize.text.function = function(x) {
                 x
-            }, tabular.environment = "longtable")
+            }, tabular.environment = tab.env)
     }
     if (n.levels > 1) {
         out2[, 2] <- rep(c(levels(group), "all"), times = n.var)
-        xtab1 <- xtable(out2, digits = prec, align = paste(ali, 
-            align.stats, sep = ""), caption = cap, label = lab)
-        xtab2 <- print(xtab1, include.rownames = FALSE, floating = FALSE, 
-            type = "latex", hline.after = hlines, size = "footnotesize", 
+        xtab1 <- xtable(out2, align = paste(ali, align.stats, 
+            sep = ""), caption = cap, label = lab)
+        xtab2 <- print(xtab1, include.rownames = FALSE, floating = float, 
+            type = "latex", hline.after = hlines, size = font.size, 
             sanitize.text.function = function(x) {
                 x
-            }, tabular.environment = "longtable")
+            }, tabular.environment = tab.env)
     }
 }

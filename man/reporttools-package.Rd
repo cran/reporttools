@@ -12,8 +12,8 @@ writing reports of data analysis using Sweave.
 \tabular{ll}{
 Package: \tab reporttools\cr
 Type: \tab Package\cr
-Version: \tab 1.0.3\cr
-Date: \tab 2009-04-22\cr
+Version: \tab 1.0.4\cr
+Date: \tab 2009-07-29\cr
 Depends: \tab xtable\cr
 License: \tab GPL (>=2) \cr
 }
@@ -25,7 +25,8 @@ functions are most efficiently used when generating reports combining LaTeX with
 \references{
 Rufibach, K. (2009) 
 reporttools: R-Functions to Generate LaTeX Tables of Descriptive Statistics.
-Journal of Statistical Software, to appear.
+Journal of Statistical Software, Code Snippets, 31(1). \cr
+\url{http://www.jstatsoft.org/v31/c01}.
 }
 \keyword{manip}
 \keyword{character}

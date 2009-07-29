@@ -1,4 +1,4 @@
-`eliminateNA` <-
+eliminateNA <-
 function (dat) 
 {
     n <- dim(dat)[1]

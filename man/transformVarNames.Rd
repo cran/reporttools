@@ -1,13 +1,13 @@
 \name{transformVarNames}
 \alias{transformVarNames}
-\title{Generate R-code assigning each variable in a dataframe to its name}
+\title{Generate R-code assigning each variable in a data frame to its name}
 \description{
 This function generates a one-column matrix, containing strings of assignments of the variables in a 
-dataframe.}
+data frame.}
 \usage{transformVarNames(dat, name)}
 \arguments{
   \item{dat}{Dataframe.}
-  \item{name}{Name of dataframe.}
+  \item{name}{Name of data frame.}
 }
 \value{One-column matrix of strings containing the assignments.}
 \author{Kaspar Rufibach (maintainer), \email{kaspar.rufibach@ifspm.uzh.ch}, \cr \url{http://www.biostat.uzh.ch/aboutus/people/rufibach.html}}

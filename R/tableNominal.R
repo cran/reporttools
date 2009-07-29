@@ -1,8 +1,17 @@
-`tableNominal` <-
-function (vars, nams, weights = NA, subset = NA, group = NA, 
-    miss.cat = NA, print.pval = c("none", "fisher", "chi2")[1], 
-    vertical = TRUE, cap = "", lab = "") 
+tableNominal <-
+function (vars, weights = NA, subset = NA, group = NA, miss.cat = NA, 
+    print.pval = c("none", "fisher", "chi2")[1], vertical = TRUE, 
+    cap = "", lab = "", font.size = "footnotesize", longtable = TRUE, 
+    nams = NA) 
 {
+    if (is.data.frame(vars) == TRUE) {
+        tmp <- vars
+        vars <- list()
+        for (i in 1:ncol(tmp)) {
+            vars[[i]] <- tmp[, i]
+        }
+        nams <- colnames(tmp)
+    }
     n.var <- length(nams)
     if (identical(subset, NA) == FALSE) {
         if (identical(group, NA) == FALSE) {
@@ -101,6 +110,12 @@ function (vars, nams, weights = NA, subset = NA, group = NA,
     al <- paste("lll", vert.lin, "rrr", sep = "")
     tmp <- cumsum(ns.level + 1)
     hlines <- sort(c(0, tmp - 1, rep(tmp, each = 2)))
+    tab.env <- "longtable"
+    float <- FALSE
+    if (identical(longtable, FALSE)) {
+        tab.env <- "tabular"
+        float <- TRUE
+    }
     if (n.group > 1) {
         dimnames(out)[[2]] <- c("{\\bf Variable}", "{\\bf Levels}", 
             paste(col.tit, "_{", rep(c(levels(group), "\\mathrm{all}"), 
@@ -110,11 +125,11 @@ function (vars, nams, weights = NA, subset = NA, group = NA,
         }
         xtab1 <- xtable(out, digits = c(rep(0, 3), rep(c(0, 1, 
             1), n.group + 1)), align = al, caption = cap, label = lab)
-        xtab2 <- print(xtab1, include.rownames = FALSE, floating = FALSE, 
-            type = "latex", hline.after = hlines, size = "footnotesize", 
+        xtab2 <- print(xtab1, include.rownames = FALSE, floating = float, 
+            type = "latex", hline.after = hlines, size = font.size, 
             sanitize.text.function = function(x) {
                 x
-            }, tabular.environment = "longtable")
+            }, tabular.environment = tab.env)
     }
     if (n.group == 1) {
         out <- out[, 1:5]
@@ -122,10 +137,10 @@ function (vars, nams, weights = NA, subset = NA, group = NA,
             paste(col.tit, "$", sep = ""))
         xtab1 <- xtable(out, digits = c(rep(0, 3), c(0, 1, 1)), 
             align = al, caption = cap, label = lab)
-        xtab2 <- print(xtab1, include.rownames = FALSE, floating = FALSE, 
-            type = "latex", hline.after = hlines, size = "footnotesize", 
+        xtab2 <- print(xtab1, include.rownames = FALSE, floating = float, 
+            type = "latex", hline.after = hlines, size = font.size, 
             sanitize.text.function = function(x) {
                 x
-            }, tabular.environment = "longtable")
+            }, tabular.environment = tab.env)
     }
 }

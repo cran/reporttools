@@ -1,7 +1,13 @@
-`displayKbyC` <-
+displayKbyC <-
 function (v1, v2, names = c("v1", "v2"), cap = "", lab = "", 
     row.nam = NA, col.nam = NA) 
 {
+    if (is.factor(v1)) {
+        v1 <- factor(v1, exclude = NULL)
+    }
+    if (is.factor(v2)) {
+        v2 <- factor(v2, exclude = NULL)
+    }
     mat <- table(v1, v2)
     if (is.na(row.nam[1]) == TRUE) {
         row.nam <- dimnames(mat)[[1]]

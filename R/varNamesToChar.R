@@ -1,4 +1,4 @@
-`varNamesToChar` <-
+varNamesToChar <-
 function (varnam) 
 {
     tmp2 <- ""

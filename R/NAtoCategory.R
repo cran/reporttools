@@ -1,4 +1,4 @@
-`NAtoCategory` <-
+NAtoCategory <-
 function (fact, label = "missing") 
 {
     if (sum(is.na(fact)) > 0) {

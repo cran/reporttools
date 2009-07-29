@@ -1,7 +1,23 @@
-reporttools_1.0.3 (, 2009)
+reporttools_1.0.5 ()
+---------------------------------
+
+reporttools_1.0.4 (July 29, 2009)
+---------------------------------
+- added longtable option to table functions
+- modified prec command
+- default is now to provide a data.frame to vars
+- added JSS paper as vignette
+- added CITATION file
+- modified displayKbyC such that it can deal with subsets of v1 and v2
+  that do not contain all initial factor levels --> factor(., exclude = NULL)
+- modified disp such that it can handle vectors with missing values
+
+reporttools_1.0.3 (April 22, 2009)
 ---------------------------------
 - removed 'summary' command from tableContinuous and tableDate
 - added option to use weights and subset to tableContinuous, tableDate, tableNominal
+- modified function 'disp'
+- Repaired third example in 'tableContinuous' help file
 
 reporttools_1.0.2 (March 4, 2009)
 ---------------------------------
