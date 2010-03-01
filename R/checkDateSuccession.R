@@ -1,4 +1,4 @@
-checkDateSuccession <-
+`checkDateSuccession` <-
 function (d1, d2, pat, names = NA, lab = "") 
 {
     if (is.na(names[1]) == TRUE) {

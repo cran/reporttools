@@ -10,10 +10,12 @@ per variable. User-defined statistics can be provided.
 \usage{
 tableContinuous(vars, weights = NA, subset = NA, group = NA, 
      stats = c("n", "min", "q1", "median", "mean", "q3", "max", 
-     "s", "iqr", "na"), prec = 1, col.tit = NA, print.pval = 
-     c("none", "anova", "kruskal")[1], declare.zero = 10^-10, 
-     cap = "", lab = "", font.size = "footnotesize", 
-     longtable = TRUE, disp.cols = NA, nams = NA)
+     "s", "iqr", "na"), prec = 1, col.tit = NA,
+     col.tit.font = c("bf", "", "sf", "it", "rm"), print.pval = 
+     c("none", "anova", "kruskal"), pval.bound = 10^-4, 
+     declare.zero = 10^-10, cap = "", lab = "", 
+     font.size = "footnotesize", longtable = TRUE, 
+     disp.cols = NA, nams = NA)
 }
 \arguments{
   \item{vars}{A data frame containing continuous variables. See \code{nams} for an alternative
@@ -27,11 +29,16 @@ tableContinuous(vars, weights = NA, subset = NA, group = NA,
   a single number (the desired statistic). For details see the examples below.}
   \item{prec}{Specify number of decimals to be displayed.}
   \item{col.tit}{Specify titles of columns. Note that the length of this vector must be equal to the length of 
-  \code{stats} plus the number of potential user-defined functions added to \code{stats}.}
+  \code{stats} plus the number of potential user-defined functions added
+  to \code{stats}.}
+  \item{col.tit.font}{If \code{col.tit} has not been specified, choose the
+    font for the column titles here (default: no special font face).}
   \item{print.pval}{If \code{print.pval == "anova"}, \eqn{p}-values for an analysis of variance for a location
   difference between groups are added to the table. If \code{print.pval == "kruskal"}, \eqn{p}-values of a Kruskal-Wallis test
   are given. If \code{group} has only two levels, the respective \eqn{p}-values of a \eqn{t}- or Mann-Whitney test
-  are provided. Only applies if \code{group} is provided.}
+  are provided. Only applies if \code{group} is provided. Note that by default, any missing values are removed for computation of \eqn{p}-values. If 
+  missings should be considered a separate level, define the input variables accordingly.}
+  \item{pval.bound}{\eqn{p}-values below \code{pval.bound} are formatted as \code{< pval.bound}.}
   \item{declare.zero}{Computed descriptive statistics (not \eqn{p}-values) below that constant are set to 0.
   Yields nicer tables, especially when displaying centered or standardized variables.}
   \item{cap}{The caption of the resulting LaTeX table.}

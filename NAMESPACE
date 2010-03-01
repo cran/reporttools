@@ -1,0 +1,23 @@
+## which functions shall be accessible by the users?
+export(tableDate,
+       tableContinuous,
+       tableNominal,
+       disp,
+       displayCI,
+       displayKbyC,
+       eliminateNA,
+       formatPval,
+       getFonts,
+       math,
+       checkDateSuccession,
+       NAtoCategory,
+       transformVarNames,
+       varNamesToChar,
+       colToMat,
+       correctVarNames,
+       vectorToString
+       )
+
+## which functions from external packages do we need?
+importFrom(xtable,
+           xtable)

@@ -1,5 +1,12 @@
-reporttools_1.0.5 ()
+reporttools_1.0.5 (March 1, 2010)
 ---------------------------------
+- added functions colToMat, correctVarNames, vectorToString
+- modified displayCI() so that it omits spaces between brackets
+  and numbers
+- added option 'cumsum' to tableNominal
+- added option 'col.tit.font' to tabulating functions
+- added NAMESPACE file
+- added p-value formatting to tabulating functions
 
 reporttools_1.0.4 (July 29, 2009)
 ---------------------------------

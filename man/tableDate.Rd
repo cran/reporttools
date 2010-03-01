@@ -10,8 +10,10 @@ observations, per variable.
 \usage{
 tableDate(vars, weights = NA, subset = NA, group = NA, 
      stats = c("n", "min", "q1", "median", "mean", "q3", "max", "na"), 
-     col.tit = NA, print.pval = TRUE, cap = "", lab = "", font.size = 
-     "footnotesize", longtable = TRUE, disp.cols = NA, nams = NA)
+     col.tit = NA, col.tit.font = c("bf", "", "sf", "it", "rm"),
+     print.pval = TRUE, pval.bound = 10^-4, cap = "", lab = "", 
+     font.size = "footnotesize", longtable = TRUE, disp.cols = NA, 
+     nams = NA)
 }
 \arguments{
   \item{vars}{A data frame of date variables. See \code{nams} for an alternative
@@ -22,8 +24,11 @@ tableDate(vars, weights = NA, subset = NA, group = NA,
   \item{stats}{Specify which descriptive statistics should be displayed in the table, by either directly providing
   one or more of the default character strings (in arbitrary order).}
   \item{col.tit}{Specify titles of columns.}
+  \item{col.tit.font}{If \code{col.tit} has not been specified, choose the
+    font for the column titles here (default: no special font face).}
   \item{print.pval}{If \code{print.pval == TRUE}, \eqn{p}-values of a Mann-Whitney or Kruskal-Wallis 
   test for a difference between groups are provided.}
+  \item{pval.bound}{\eqn{p}-values below \code{pval.bound} are formatted as \code{< pval.bound}.}
   \item{cap}{The caption of the resulting LaTeX table.}
   \item{lab}{The label of the resulting LaTeX table.}
   \item{font.size}{Font size for the generated table in LaTeX.}
@@ -74,8 +79,7 @@ tableDate(vars = vars, weights = weights, subset = subset,
 ## If a list is given to vars, the variables can be of different length. 
 ## However, then weights, subset, and group must be set to NA (the default).
 tableDate(vars = list(diagnosis, death), nams = c("Diagnosis", "Death"), 
-    disp.cols = c("n", "na", "min", "max"), col.tit = c("observations", 
-    "percentage", "cum. percentage"), print.pval = FALSE, cap = 
+    disp.cols = c("n", "na", "min", "max"), print.pval = FALSE, cap = 
     "Table of date variables.", lab = "tab: descr stat date")    
 }
 \keyword{manip}

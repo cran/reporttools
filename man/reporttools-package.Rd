@@ -12,8 +12,8 @@ writing reports of data analysis using Sweave.
 \tabular{ll}{
 Package: \tab reporttools\cr
 Type: \tab Package\cr
-Version: \tab 1.0.4\cr
-Date: \tab 2009-07-29\cr
+Version: \tab 1.0.5\cr
+Date: \tab 2010-03-01\cr
 Depends: \tab xtable\cr
 License: \tab GPL (>=2) \cr
 }
@@ -21,7 +21,10 @@ At the beginning of data analysis, it is often useful to have tables of descript
 nominal variables available. This package provides such functions, where the output is a LaTeX table. The 
 functions are most efficiently used when generating reports combining LaTeX with R via Sweave.
 }
-\author{Kaspar Rufibach (maintainer), \email{kaspar.rufibach@ifspm.uzh.ch}, \cr \url{http://www.biostat.uzh.ch/aboutus/people/rufibach.html}}
+\author{Kaspar Rufibach (maintainer), \email{kaspar.rufibach@ifspm.uzh.ch}, \cr \url{http://www.biostat.uzh.ch/aboutus/people/rufibach.html}
+
+I thank Daniel Sabanes-Bove, Sarah Haile, and Philipp Muri for helpful discussions and remarks.
+}
 \references{
 Rufibach, K. (2009) 
 reporttools: R-Functions to Generate LaTeX Tables of Descriptive Statistics.

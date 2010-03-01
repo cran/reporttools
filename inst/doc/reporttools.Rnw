@@ -86,9 +86,12 @@ options(prompt = "R> ", continue = "+  ", width = 100, digits = 4)
 \section{About this document}
 % -----------------------------------------------------
 This document is an introduction to the \proglang{R} package
-\pkg{reporttools} \citep{reporttools} based on \citet{Rufibach:2009}. It aims to provide a detailed user guide based 
-on simple, reproducible worked examples. The \pkg{reporttools} package is available from the
+\pkg{reporttools} \citep{reporttools} based on \citet{Rufibach:2009}. It aims to provide a detailed user guide 
+based on simple, reproducible worked examples. The \pkg{reporttools} package is available from the
 Comprehensive \proglang{R} Archive Network via \url{http://CRAN.R-project.org/package=reporttools}.
+
+Compared to the package that was the base of \citet{Rufibach:2009} some minor modifications and additions 
+have been made to the package. All changes were intended to be backwards compatible.
 
 
 % -----------------------------------------------------

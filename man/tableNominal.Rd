@@ -9,8 +9,10 @@ observations, per variable.
 }
 \usage{tableNominal(vars, weights = NA, subset = NA, 
     group = NA, miss.cat = NA, print.pval = c("none", "fisher", 
-    "chi2")[1], vertical = TRUE, cap = "", lab = "", font.size = 
-    "footnotesize", longtable = TRUE, nams = NA)}
+    "chi2"), pval.bound = 10^-4, fisher.B = 2000, vertical = TRUE, 
+    cap = "", lab = "", col.tit.font = c("bf", "", "sf", "it", "rm"), 
+    font.size = "footnotesize", longtable = TRUE, nams = NA, 
+    cumsum = TRUE)}
 \arguments{
   \item{vars}{A data frame of nominal variables. See \code{nams} for an alternative
   way of specifying the variables to be displayed.}
@@ -19,16 +21,23 @@ observations, per variable.
   \item{group}{Optional grouping variable.}
   \item{miss.cat}{Vector specifying the factors in \code{vars} that should have their \code{NA}s transformed to a separate category.}
   \item{print.pval}{Add \eqn{p}-values of Fisher's exact or \eqn{\chi^2} test for a difference of distributions between 
-  groups to the table, if there is more than one group.}
+  groups to the table, if there is more than one group. Note that by default, any missing values are removed for computation of \eqn{p}-values. If 
+  missings should be considered a separate level, define the input variables accordingly.}
+  \item{pval.bound}{\eqn{p}-values below \code{pval.bound} are formatted as \code{< pval.bound}.}
+  \item{fisher.B}{Number of simulations to compute \eqn{p}-value for Fisher's exact test. Note that in the function
+  \code{fisher.test} the option \code{simulate.p.value} is set to \code{TRUE}.}
   \item{vertical}{If \code{TRUE}, add vertical lines to the table, separating labels and groups, if applicable.}
   \item{cap}{The caption of the resulting LaTeX table.}
   \item{lab}{The label of the resulting LaTeX table.}
+  \item{col.tit.font}{Choose the font for the column titles here (default: boldface).}
   \item{font.size}{Font size for the generated table in LaTeX.}
   \item{longtable}{If \code{TRUE}, function makes use of package \code{longtable} in LaTex to generate tables that 
   span more than one page. If \code{FALSE}, generates a table in \code{tabular} environment.}
   \item{nams}{A vector of strings, containing the names corresponding to the variables in \code{vars}, if \code{vars}
   is not a data frame but a list of variables. These are then the names that appear in the LaTeX table.
   This option is only kept for backward compatibility.}
+  \item{cumsum}{If \code{TRUE}, the cumulative sums of the percentages
+    are included for every level of the grouping variable.}
 }
 \value{Outputs the LaTeX table.}
 \note{If \code{longtable = TRUE} (which is the default), the function generates a table that may be more than one page 
@@ -54,14 +63,27 @@ vars <- CO2[, 1:2]
 group <- CO2[, "Treatment"]
 weights <- c(rep(1, 60), rep(0, 10), rep(2, 14))
      
-## only consider a subset of observations
+## first all observations
 tableNominal(vars = vars, weights = weights, group = group, cap = 
-    "Table of nominal variables.", lab = "tab: nominal")      
+    "Table of nominal variables.", lab = "tab: nominal")
 
-## only consider a subset of observations
+## do not include cumulative percentages
+tableNominal(vars = vars, weights = weights, group = group, cap = 
+    "Table of nominal variables.", lab = "tab: nominal", cumsum=FALSE)
+
+## but include p-value for Fisher's exact test
+tableNominal(vars = vars, weights = weights, group = group, cap = 
+    "Table of nominal variables.", lab = "tab: nominal",
+    print.pval="fisher", cumsum=FALSE)     
+
+## then only consider a subset of observations
 subset <- c(1:50, 60:70)
 tableNominal(vars = vars, weights = weights, subset = subset, group = group, 
-    cap = "Table of nominal variables.", lab = "tab: nominal")     
+    cap = "Table of nominal variables.", lab = "tab: nominal")
+
+## do not include cumulative percentages
+tableNominal(vars = vars, weights = weights, subset = subset, group = group, 
+    cap = "Table of nominal variables.", lab = "tab: nominal", cumsum=FALSE)     
 }
 \keyword{manip}
 \keyword{character}
