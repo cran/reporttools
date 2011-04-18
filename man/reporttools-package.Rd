@@ -12,8 +12,8 @@ writing reports of data analysis using Sweave.
 \tabular{ll}{
 Package: \tab reporttools\cr
 Type: \tab Package\cr
-Version: \tab 1.0.5\cr
-Date: \tab 2010-03-01\cr
+Version: \tab 1.0.6\cr
+Date: \tab 2011-04-18\cr
 Depends: \tab xtable\cr
 License: \tab GPL (>=2) \cr
 }

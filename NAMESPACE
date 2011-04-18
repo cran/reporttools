@@ -15,7 +15,11 @@ export(tableDate,
        varNamesToChar,
        colToMat,
        correctVarNames,
-       vectorToString
+       nominalTest,
+       formatPercent,
+       NAtoZero,
+       attachPresAbs,
+       attachYesNo
        )
 
 ## which functions from external packages do we need?

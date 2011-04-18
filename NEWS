@@ -1,3 +1,9 @@
+logcondens_1.0.6:
+---------------------------------
+- Replaced 'vectorToString()' by 'paste()' using option 'collapse'
+- Add option 'percentage' to 'displayKbyC()'
+- Added functions 'NAtoZero()', 'attachPresAbs()', 'attachYesNo()'
+
 reporttools_1.0.5 (March 1, 2010)
 ---------------------------------
 - added functions colToMat, correctVarNames, vectorToString

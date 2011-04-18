@@ -98,7 +98,13 @@ for (i in 1:n.var){
     ind4 <- 1 - max(unlist(lapply(lapply(splits2, is.na), sum)) == unlist(lapply(lapply(splits2, is.na), length)))
     
     if (ind1 * ind2 * ind3 * ind4 == 1){
-        if (print.pval == "fisher"){pval <- fisher.test(v2, g2, simulate.p.value = TRUE, B = fisher.B)$p.value}
+        if (print.pval == "fisher"){
+            pval <-
+                if(fisher.B == Inf)
+                    fisher.test(v2, g2, simulate.p.value = FALSE)$p.value
+                else
+                    fisher.test(v2, g2, simulate.p.value = TRUE, B = fisher.B)$p.value
+        }
         if (print.pval == "chi2"){pval <- chisq.test(v2, g2, correct = TRUE)$p.value}
         out[max(ind), 1] <- paste("p", formatPval(pval, includeEquality = TRUE, eps = pval.bound))
     }

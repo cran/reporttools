@@ -25,7 +25,8 @@ observations, per variable.
   missings should be considered a separate level, define the input variables accordingly.}
   \item{pval.bound}{\eqn{p}-values below \code{pval.bound} are formatted as \code{< pval.bound}.}
   \item{fisher.B}{Number of simulations to compute \eqn{p}-value for Fisher's exact test. Note that in the function
-  \code{fisher.test} the option \code{simulate.p.value} is set to \code{TRUE}.}
+  \code{fisher.test} the option \code{simulate.p.value} is set to
+  \code{TRUE}, unless \code{fisher.B == Inf} which asks for the exact computation.}
   \item{vertical}{If \code{TRUE}, add vertical lines to the table, separating labels and groups, if applicable.}
   \item{cap}{The caption of the resulting LaTeX table.}
   \item{lab}{The label of the resulting LaTeX table.}
@@ -69,12 +70,17 @@ tableNominal(vars = vars, weights = weights, group = group, cap =
 
 ## do not include cumulative percentages
 tableNominal(vars = vars, weights = weights, group = group, cap = 
-    "Table of nominal variables.", lab = "tab: nominal", cumsum=FALSE)
+    "Table of nominal variables.", lab = "tab: nominal", cumsum = FALSE)
 
 ## but include p-value for Fisher's exact test
 tableNominal(vars = vars, weights = weights, group = group, cap = 
     "Table of nominal variables.", lab = "tab: nominal",
-    print.pval="fisher", cumsum=FALSE)     
+    print.pval = "fisher", cumsum = FALSE)     
+
+## Fisher's exact test without simulated p-value
+tableNominal(vars = vars, weights = weights, group = group, cap = 
+    "Table of nominal variables.", lab = "tab: nominal",
+    print.pval = "fisher", fisher.B = Inf, cumsum = FALSE)     
 
 ## then only consider a subset of observations
 subset <- c(1:50, 60:70)
@@ -83,7 +89,7 @@ tableNominal(vars = vars, weights = weights, subset = subset, group = group,
 
 ## do not include cumulative percentages
 tableNominal(vars = vars, weights = weights, subset = subset, group = group, 
-    cap = "Table of nominal variables.", lab = "tab: nominal", cumsum=FALSE)     
+    cap = "Table of nominal variables.", lab = "tab: nominal", cumsum = FALSE)     
 }
 \keyword{manip}
 \keyword{character}
