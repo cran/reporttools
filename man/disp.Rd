@@ -10,7 +10,7 @@
 }
 \value{\item{t}{A vector of character strings containing the input number \code{n} formatted as specified by \code{d1}
 and \code{d2}.}}
-\author{Kaspar Rufibach (maintainer), \email{kaspar.rufibach@ifspm.uzh.ch}, \cr \url{http://www.biostat.uzh.ch/aboutus/people/rufibach.html}}
+\author{Kaspar Rufibach (maintainer), \email{kaspar.rufibach@gmail.com}, \cr \url{http://www.kasparrufibach.ch}}
 \examples{
 r <- c(0.23445, 0.000089)
 disp(r)}

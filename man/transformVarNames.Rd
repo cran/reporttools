@@ -10,7 +10,7 @@ data frame.}
   \item{name}{Name of data frame.}
 }
 \value{One-column matrix of strings containing the assignments.}
-\author{Kaspar Rufibach (maintainer), \email{kaspar.rufibach@ifspm.uzh.ch}, \cr \url{http://www.biostat.uzh.ch/aboutus/people/rufibach.html}}
+\author{Kaspar Rufibach (maintainer), \email{kaspar.rufibach@gmail.com}, \cr \url{http://www.kasparrufibach.ch}}
 \examples{
 labpar1 <- rnorm(50)
 labor.param2 <- rgamma(50, 2, 1)

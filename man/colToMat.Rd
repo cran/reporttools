@@ -10,6 +10,6 @@ breaks a \eqn{n \times p} data frame in a data frame with \code{ceiling(n / cols
   \item{cols}{Number of columns of the reformatted data.frame.}
 }
 \value{Returns the reformatted data frame.}
-\author{Kaspar Rufibach (maintainer), \email{kaspar.rufibach@ifspm.uzh.ch}, \cr \url{http://www.biostat.uzh.ch/aboutus/people/rufibach.html}}
+\author{Kaspar Rufibach (maintainer), \email{kaspar.rufibach@gmail.com}, \cr \url{http://www.kasparrufibach.ch}}
 \keyword{manip}
 \keyword{character}

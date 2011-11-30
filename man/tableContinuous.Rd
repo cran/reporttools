@@ -58,7 +58,7 @@ long, you need to include the package longtable in the LaTeX source.
 
 If a list of variables is given to \code{vars}, not all of these variables need to be of the same length. However, 
 note the Warning below.}
-\author{Kaspar Rufibach (maintainer), \email{kaspar.rufibach@ifspm.uzh.ch}, \cr \url{http://www.biostat.uzh.ch/aboutus/people/rufibach.html}}
+\author{Kaspar Rufibach (maintainer), \email{kaspar.rufibach@gmail.com}, \cr \url{http://www.kasparrufibach.ch}}
 \references{
 Rufibach, K. (2009) 
 reporttools: R-Functions to Generate LaTeX Tables of Descriptive Statistics.

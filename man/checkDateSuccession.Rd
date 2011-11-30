@@ -18,7 +18,7 @@ checkDateSuccession(d1, d2, pat, names = NA, lab = "")
 \value{
 A latex table is output.
 }
-\author{Kaspar Rufibach (maintainer), \email{kaspar.rufibach@ifspm.uzh.ch}, \cr \url{http://www.biostat.uzh.ch/aboutus/people/rufibach.html}}
+\author{Kaspar Rufibach (maintainer), \email{kaspar.rufibach@gmail.com}, \cr \url{http://www.kasparrufibach.ch}}
 \examples{
 set.seed(1977)
 diagnosis <- as.Date(round(runif(10, min = 35000, max = 40000)), 

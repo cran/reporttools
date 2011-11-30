@@ -5,7 +5,7 @@
 \usage{getFonts(font)}
 \arguments{\item{font}{Provide font type.}}
 \value{Returns function to format column titles.}
-\author{Kaspar Rufibach (maintainer), \email{kaspar.rufibach@ifspm.uzh.ch}, \cr \url{http://www.biostat.uzh.ch/aboutus/people/rufibach.html}}
+\author{Kaspar Rufibach (maintainer), \email{kaspar.rufibach@gmail.com}, \cr \url{http://www.kasparrufibach.ch}}
 \keyword{manip}
 \keyword{character}
 

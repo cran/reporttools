@@ -4,6 +4,8 @@ export(tableDate,
        tableNominal,
        disp,
        displayCI,
+       displayCoxPH,
+       displayCrossTabs,
        displayKbyC,
        eliminateNA,
        formatPval,
@@ -19,7 +21,8 @@ export(tableDate,
        formatPercent,
        NAtoZero,
        attachPresAbs,
-       attachYesNo
+       attachYesNo, 
+       twoGroupComparisons
        )
 
 ## which functions from external packages do we need?

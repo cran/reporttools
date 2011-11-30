@@ -7,7 +7,7 @@
 \item{fact}{Factor variable.}
 \item{label}{Label to be given to the missing valus.}}
 \value{Updated factor variable.}
-\author{Kaspar Rufibach (maintainer), \email{kaspar.rufibach@ifspm.uzh.ch}, \cr \url{http://www.biostat.uzh.ch/aboutus/people/rufibach.html}}
+\author{Kaspar Rufibach (maintainer), \email{kaspar.rufibach@gmail.com}, \cr \url{http://www.kasparrufibach.ch}}
 \examples{
 set.seed(1977)
 fact <- factor(sample(c(round(runif(10, 1, 3)), rep(NA, 10))), levels = 1:3, 

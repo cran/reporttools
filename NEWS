@@ -1,4 +1,11 @@
-logcondens_1.0.6:
+reporttools_1.0.7
+---------------------------------
+- Added function displayCoxPH()
+- Added function displayCrossTabs()
+- Added function twoGroupComparisons()
+- Updated KRs contact details
+
+reporttools_1.0.6 (April 24, 2011)
 ---------------------------------
 - Replaced 'vectorToString()' by 'paste()' using option 'collapse'
 - Add option 'percentage' to 'displayKbyC()'

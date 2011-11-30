@@ -5,7 +5,7 @@
 \usage{math(x)}
 \arguments{\item{x}{Character string.}}
 \value{Returns x as a string within math dollars.}
-\author{Kaspar Rufibach (maintainer), \email{kaspar.rufibach@ifspm.uzh.ch}, \cr \url{http://www.biostat.uzh.ch/aboutus/people/rufibach.html}}
+\author{Kaspar Rufibach (maintainer), \email{kaspar.rufibach@gmail.com}, \cr \url{http://www.kasparrufibach.ch}}
 \keyword{manip}
 \keyword{character}
 

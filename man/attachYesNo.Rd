@@ -6,7 +6,7 @@
 \arguments{
 \item{v}{Vector.}}
 \value{Factor with the corresponding levels.}
-\author{Kaspar Rufibach (maintainer), \email{kaspar.rufibach@ifspm.uzh.ch}, \cr \url{http://www.biostat.uzh.ch/aboutus/people/rufibach.html}}
+\author{Kaspar Rufibach (maintainer), \email{kaspar.rufibach@gmail.com}, \cr \url{http://www.kasparrufibach.ch}}
 \examples{
 set.seed(1977)
 vec <- round(runif(10, 0, 1))

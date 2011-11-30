@@ -20,7 +20,7 @@ displayKbyC(v1, v2, percentage = c("none", "row", "col",
   \item{col.nam}{Labels of \code{v2} to be given as column names.}
 }
 \value{Returns a LaTeX K x C table.}
-\author{Kaspar Rufibach (maintainer), \email{kaspar.rufibach@ifspm.uzh.ch}, \cr \url{http://www.biostat.uzh.ch/aboutus/people/rufibach.html}}
+\author{Kaspar Rufibach (maintainer), \email{kaspar.rufibach@gmail.com}, \cr \url{http://www.kasparrufibach.ch}}
 \examples{
 set.seed(1977)
 v1 <- round(runif(20, 0, 3))
