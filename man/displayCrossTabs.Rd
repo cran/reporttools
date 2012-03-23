@@ -6,7 +6,8 @@ For each column of a dataframe, generate a LaTeX table against a given variable 
 If the expected frequencies are all \eqn{>5} then a \eqn{\chi^2}-test is computed, otherwise Fisher's exact test.}
 \usage{
 displayCrossTabs(vars, v0, nam0, lab0, 
-    percentage = c("none", "row", "col", "total")[1])
+    percentage = c("none", "row", "col", "total")[1], 
+    add.p = TRUE)
 }
 \arguments{
   \item{vars}{Dataframe of nominal variables.}
@@ -14,6 +15,7 @@ displayCrossTabs(vars, v0, nam0, lab0,
   \item{nam0}{Name of \code{v0}.}
   \item{lab0}{Initial string for table label. The column number of \code{vars} will be added, so that each table has a unique label.}
   \item{percentage}{Add percentages with respect to row, column, or table total.}
+  \item{add.p}{Logical. If true, add \eqn{p}-value as described above.}
 }
 \value{Displays LaTeX K x C tables and returns a list containing all the information.}
 \author{Kaspar Rufibach (maintainer), \email{kaspar.rufibach@gmail.com}, \cr \url{http://www.kasparrufibach.ch}}

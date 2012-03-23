@@ -7,7 +7,7 @@
 
 %\VignetteIndexEntry{A guide to the reporttools package}                                          
 %\VignetteKeywords{reporttools}                                                                   
-%\VignetteDepends{reporttools, xtable}                                      
+%\VignetteDepends{reporttools, xtable, survival}                                      
 %\VignettePackage{reporttools} 
 
 %% almost as usual

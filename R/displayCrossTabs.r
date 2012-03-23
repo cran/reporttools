@@ -1,4 +1,4 @@
-displayCrossTabs <- function(vars, v0, nam0, lab0, percentage = c("none", "row", "col", "total")[1]){
+displayCrossTabs <- function(vars, v0, nam0, lab0, percentage = c("none", "row", "col", "total")[1], add.p = TRUE){
 
 tabs <- NULL
 ps <- NULL
@@ -22,7 +22,8 @@ for (i in 1:ncol(vars)){
             fish <- "Fisher's exact"
             p1 <- fisher.test(v1, v2)$p.value
             }
-        capo <- paste(nam0, " vs. ", colnames(vars)[i], ". $p$-value ", fish, " test: ", disp(p1), ".", sep = "")
+        capo <- paste(nam0, " vs. ", colnames(vars)[i], ".", sep = "")
+        if (identical(add.p, TRUE)){capo <- paste(capo, " $p$-value ", fish, " test: ", disp(p1), ".", sep = "")}
     }
     displayKbyC(v1, v2, names = c(nam0, colnames(vars)[i]), cap = capo, lab = paste(lab0, i, sep = ""), percentage = percentage)
     tabs[[i]] <- table(v1, v2)

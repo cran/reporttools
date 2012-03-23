@@ -24,12 +24,20 @@ formatPval <- function (pv,
 
         if (any(fixp))
         {
+            ## DSB's initial version:
             rr[fixp] <- format(pv[fixp], digits=digits, scientific=scientific)
+            
+            ## my version:
+            rr[fixp] <- disp(pv[fixp], 2, 2)
         }
 
         if (any(!fixp))
         {
+            ## DSB's initial version:
             rr[! fixp] <- format(pv[! fixp], digits=digits, scientific=scientific)
+
+            ## my version:
+            rr[! fixp] <- disp(pv[! fixp], 2, 2)
         }
 
         r[! is0] <- rr

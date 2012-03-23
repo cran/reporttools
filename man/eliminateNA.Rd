@@ -12,6 +12,7 @@ one missing value.
   \item{incomplete}{Dataframe containing observations with at least one \code{NA}.}
 }
 \author{Kaspar Rufibach (maintainer), \email{kaspar.rufibach@gmail.com}, \cr \url{http://www.kasparrufibach.ch}}
+\seealso{\code{\link{complete.cases}}}
 \examples{
 pat <- 1:10; var1 <- rnorm(10); var2 <- factor(round(rgamma(10, 2, 1)))
 dat <- data.frame(cbind(pat, var1, var2))

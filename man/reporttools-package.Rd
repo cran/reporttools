@@ -12,9 +12,9 @@ writing reports of data analysis using Sweave.
 \tabular{ll}{
 Package: \tab reporttools\cr
 Type: \tab Package\cr
-Version: \tab 1.0.7\cr
-Date: \tab 2011-11-30\cr
-Depends: \tab xtable\cr
+Version: \tab 1.0.8\cr
+Date: \tab 2012-03-23\cr
+Depends: \tab xtable, survival \cr
 License: \tab GPL (>=2) \cr
 }
 At the beginning of data analysis, it is often useful to have tables of descriptive values for continuous and
