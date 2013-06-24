@@ -3,7 +3,7 @@ tableDate <- function(vars, weights = NA, subset = NA, group = NA,
           col.tit = NA, col.tit.font=c("bf", "", "sf", "it", "rm"),
           print.pval = TRUE, pval.bound = 10^-4, cap = "", lab = "", 
           font.size = "footnotesize", longtable = TRUE, disp.cols = NA, 
-          nams = NA){
+          nams = NA, ...){
           
 ## for backward compatibility, we retained the argument 'disp.cols'
 if (identical(disp.cols, NA) == FALSE){stats <- disp.cols}
@@ -100,7 +100,7 @@ for (i in 1:n.var){
     out[max(ind), 10] <- sum(is.na(vars[[i]]) == TRUE)
     if ((n.levels > 1) && (print.pval == TRUE)){
         pval <- kruskal.test(splits)$p.value
-        out[(i - 1) * (n.levels + 1) + n.levels + 1, 1] <- paste("p", formatPval(pval, includeEquality = TRUE, eps = pval.bound))
+        out[(i - 1) * (n.levels + 1) + n.levels + 1, 1] <- paste("$p", formatPval(pval, includeEquality = TRUE, eps = pval.bound), "$", sep = "")
     }
 }
 
@@ -126,13 +126,13 @@ if (n.levels > 1){
     xtab1 <- xtable::xtable(out2, align = paste("lll", align.stats, sep = ""), caption = cap, label = lab)
     xtab2 <- print(xtab1, include.rownames = FALSE, floating = float, 
         type = "latex", hline.after = hlines, size = font.size, 
-        sanitize.text.function = function(x){x}, tabular.environment = tab.env)}
+        sanitize.text.function = function(x){x}, tabular.environment = tab.env, ...)}
 
 if (n.levels == 1){
     out3 <- out2[(1:n.var - 1) * 2 + 1, -2]
     xtab1 <- xtable::xtable(out3, align = paste("ll", align.stats, sep = ""), caption = cap, label = lab)
     xtab2 <- print(xtab1, include.rownames = FALSE, floating = float, 
-        type = "latex", size = font.size, sanitize.text.function = function(x){x}, tabular.environment = tab.env)
+        type = "latex", size = font.size, sanitize.text.function = function(x){x}, tabular.environment = tab.env, ...)
 }
 
 }

@@ -1,3 +1,11 @@
+reporttools_1.0.9
+---------------------------------
+- Modified formatting of p-values in tableX-functions. Thanks to Patrick McCormick for the hint.
+- Modified 'transformVarNames' from data$var1 to data[, "var1"]
+- Added 'pairwise.fisher.test'
+- Enabled more passing through of xtable arguments. Thanks to John Horton and Ivan Hanigan for the suggestion. Added to the help file for tableNominal how to have a caption on top of the table, instead of at the bottom, as was the previous default.
+- Added to help  file of tableNominal how to enable repeating table names at the top of each page in the longtable format. Thanks to Ivan Hanigan for the suggestion.
+
 reporttools_1.0.8
 ---------------------------------
 - Updated package to new testing framework on CRAN.

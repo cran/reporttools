@@ -21,8 +21,9 @@ export(tableDate,
        formatPercent,
        NAtoZero,
        attachPresAbs,
-       attachYesNo, 
-       twoGroupComparisons
+       attachYesNo,
+       twoGroupComparisons,
+       pairwise.fisher.test
        )
 
 ## which functions from external packages do we need?

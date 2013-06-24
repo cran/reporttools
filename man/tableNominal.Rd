@@ -12,7 +12,7 @@ observations, per variable.
     "chi2"), pval.bound = 10^-4, fisher.B = 2000, vertical = TRUE, 
     cap = "", lab = "", col.tit.font = c("bf", "", "sf", "it", "rm"), 
     font.size = "footnotesize", longtable = TRUE, nams = NA, 
-    cumsum = TRUE)}
+    cumsum = TRUE, ...)}
 \arguments{
   \item{vars}{A data frame of nominal variables. See \code{nams} for an alternative
   way of specifying the variables to be displayed.}
@@ -39,6 +39,7 @@ observations, per variable.
   This option is only kept for backward compatibility.}
   \item{cumsum}{If \code{TRUE}, the cumulative sums of the percentages
     are included for every level of the grouping variable.}
+  \item{...}{Arguments pass through to \code{print.xtable}.}    
 }
 \value{Outputs the LaTeX table.}
 \note{If \code{longtable = TRUE} (which is the default), the function generates a table that may be more than one page 
@@ -90,6 +91,15 @@ tableNominal(vars = vars, weights = weights, subset = subset, group = group,
 ## do not include cumulative percentages
 tableNominal(vars = vars, weights = weights, subset = subset, group = group, 
     cap = "Table of nominal variables.", lab = "tab: nominal", cumsum = FALSE)     
+
+\dontrun{
+## caption placement at the top and repeat column headings on top of each page
+## in the longtable format. Have to manually add another backslash to hline and endhead
+## below (they are removed when compiling the help file)!
+tableNominal(vars = vars, cap = "Table of nominal variables.", cumsum = FALSE, 
+caption.placement = "top", longtable = TRUE, add.to.row = list(pos = list(0), 
+command = "\\hline \\endhead ")
+}
 }
 \keyword{manip}
 \keyword{character}

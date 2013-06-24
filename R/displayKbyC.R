@@ -52,6 +52,5 @@ displayKbyC <- function(v1, v2, percentage = c("none", "row", "col", "total")[1]
     for (i in 1:n.v2) {ali <- paste(ali, "c", sep = "")}
     xtab2 <- xtable(mat, align = paste(ali, "|c", sep = ""), caption = cap, label = lab)
     print(xtab2, include.rownames = FALSE, include.colnames = FALSE, floating = FALSE, hline.after = c(2, 2 + n.v1), type = "latex", 
-        size = "footnotesize", sanitize.text.function = function(x){x}, table.placement = "h!", tabular.environment = "longtable")
-        
+        size = "footnotesize", sanitize.text.function = function(x){x}, table.placement = "h!", tabular.environment = "longtable")        
 }

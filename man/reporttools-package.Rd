@@ -12,8 +12,8 @@ writing reports of data analysis using Sweave.
 \tabular{ll}{
 Package: \tab reporttools\cr
 Type: \tab Package\cr
-Version: \tab 1.0.8\cr
-Date: \tab 2012-03-23\cr
+Version: \tab 1.0.9\cr
+Date: \tab 2013-06-24\cr
 Depends: \tab xtable, survival \cr
 License: \tab GPL (>=2) \cr
 }
@@ -23,7 +23,7 @@ functions are most efficiently used when generating reports combining LaTeX with
 }
 \author{Kaspar Rufibach (maintainer), \email{kaspar.rufibach@gmail.com}, \cr \url{http://www.kasparrufibach.ch}
 
-I thank Daniel Sabanes-Bove, Sarah Haile, and Philipp Muri for helpful discussions and remarks.
+I thank Daniel Sabanes-Bove, Sarah Haile, Philipp Muri, Patrich McCormick, and Sina Rueeger for helpful discussions and remarks.
 }
 \references{
 Rufibach, K. (2009) 

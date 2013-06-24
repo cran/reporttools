@@ -6,7 +6,7 @@ Given two vectors \eqn{d_1} and \eqn{d_2} of date type, this function outputs al
 such that \eqn{d_{1j} \ge d_{2j}}.
 }
 \usage{
-checkDateSuccession(d1, d2, pat, names = NA, lab = "")
+checkDateSuccession(d1, d2, pat, names = NA, lab = "", typ = c("R", "tex")[2])
 }
 \arguments{
   \item{d1}{Supposedly earlier dates.}
@@ -14,6 +14,7 @@ checkDateSuccession(d1, d2, pat, names = NA, lab = "")
   \item{pat}{Corresponding list of patient (observation) numbers.}
   \item{names}{Names of date vectors, of length 3.}
   \item{lab}{Label of the generated latex table.}
+  \item{typ}{Type of output.}
 }
 \value{
 A latex table is output.
@@ -29,6 +30,9 @@ death <- as.Date(round(runif(10, min = 35000, max = 40000)),
 ## check whether diagnosis was before death
 checkDateSuccession(diagnosis, death, 1:10, names = c("Pat", 
     "diagnosis", "death"), lab = "tab: diag --> death") 
+
+checkDateSuccession(diagnosis, death, 1:10, names = c("Pat", 
+    "diagnosis", "death"), lab = "tab: diag --> death", typ = "R") 
 }
 
 \keyword{manip}

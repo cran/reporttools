@@ -27,9 +27,11 @@ for (i in 1:ncol(vars)){
     tab[i, 5]  <- sum(is.na(v2) == FALSE)
     tab[i, 6]  <- mean(v2, na.rm = TRUE) 
     tab[i, 7]  <- median(v2, na.rm = TRUE)
-    tab[i, 8]  <- sum(complete.cases(cbind(v1, v2))) 
     if (identical(paired, FALSE)){tab[i, 9]  <- -diff(t1$estimate)}
-    if (identical(paired, TRUE)){tab[i, 9]  <- t1$estimate}
+    if (identical(paired, TRUE)){
+        tab[i, 8]  <- sum(complete.cases(cbind(v1, v2)))
+        tab[i, 9]  <- t1$estimate
+        }
     tab[i, 10]  <- t2$estimate
     tab[i, 11] <- t1$p.value
     tab[i, 12] <- t2$p.value
