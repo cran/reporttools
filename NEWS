@@ -1,3 +1,8 @@
+reporttools_1.1.0
+---------------------------------
+- Reorganized inst/doc.
+- Modified description file.
+
 reporttools_1.0.9
 ---------------------------------
 - Modified formatting of p-values in tableX-functions. Thanks to Patrick McCormick for the hint.

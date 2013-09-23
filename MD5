@@ -1,6 +1,6 @@
-7f4555c5354f7c03479f6a8743f21c75 *DESCRIPTION
+7d4ef1613bd2c273cd1f0459e2fa2141 *DESCRIPTION
 18b0f033d0c9b712f642426ecd2587f5 *NAMESPACE
-d2f7836b72fd01578b149015ee144ba9 *NEWS
+20b4272de924d6959f7d001792c5d1e2 *NEWS
 7bfacae3e32b0b97923c7354b4e1f9c9 *R/NAtoCategory.r
 140db736232d3ae5b7dcb148d49ec741 *R/NAtoZero.r
 ee550077b69b502c28cf69c2cfcd4d48 *R/attachPresAbs.r
@@ -29,7 +29,7 @@ a785d971c393dff2470b39585c4d4a94 *R/tableNominal.R
 4d7b51d5aad7ba3357e9122d2d126af5 *inst/CITATION
 285076a336abff7c2c95801485356f53 *inst/doc/reporttools.R
 c84106c5b72666c582416b958c191f61 *inst/doc/reporttools.Rnw
-a96e78f3c1514e62788657b0fa675df9 *inst/doc/reporttools.pdf
+f2b3633a9f0e2c48a3ff6f4bed520985 *inst/doc/reporttools.pdf
 fd357eeec60bfcb495db09deb97b690b *man/NAtoCategory.Rd
 6b8b45a0769cc07237382551fa482c08 *man/NAtoZero.Rd
 0e965f87cb837baed2307d1c511a39b9 *man/attachPresAbs.Rd
@@ -39,7 +39,7 @@ e08f2d9b33aa4b8991797c005f0c076a *man/checkDateSuccession.Rd
 476098891b7a210b13b8446185e78e4b *man/correctVarNames.Rd
 f52c9ef577e2e15f939c45cfa20d4a8f *man/disp.Rd
 ea30e3edeebe2f10460902eeaa09d729 *man/displayCI.Rd
-ddbf717d6936b7f2793fe848a1f93002 *man/displayCoxPH.Rd
+d4f2e33a5b4cee13531917fcde04ea06 *man/displayCoxPH.Rd
 a069e84db28c629e682f7883928ea5c7 *man/displayCrossTabs.Rd
 f80043128fba21524db0030943917773 *man/displayKbyC.Rd
 7091685ef12217778857a4a36c0778aa *man/eliminateNA.Rd

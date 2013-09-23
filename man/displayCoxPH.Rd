@@ -23,7 +23,6 @@ test1 <- list(time = c(4, 3, 1, 1, 2, 2, 3),
               sex = c(0, 0, 0, 0, 1, 1, 1)) 
 
 # fit a coxph() model
-library(survival)
 mod1 <- coxph(Surv(time, status) ~ x + sex, data = test1) 
 
 # generate table to insert in Sweave file
