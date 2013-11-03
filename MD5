@@ -1,8 +1,9 @@
-7d4ef1613bd2c273cd1f0459e2fa2141 *DESCRIPTION
-18b0f033d0c9b712f642426ecd2587f5 *NAMESPACE
-20b4272de924d6959f7d001792c5d1e2 *NEWS
+487baa338c82c2bc85ea061344d7fdf6 *DESCRIPTION
+bba2a4981165ad004ffa0d55d985bdd5 *NAMESPACE
+267152c0991fbef34ec3d7c91e987086 *NEWS
 7bfacae3e32b0b97923c7354b4e1f9c9 *R/NAtoCategory.r
 140db736232d3ae5b7dcb148d49ec741 *R/NAtoZero.r
+091750ab1610c67ec3ba491ec6e99b08 *R/addLineBreak.r
 ee550077b69b502c28cf69c2cfcd4d48 *R/attachPresAbs.r
 f43257e4962e84295e3fb12e1cc69078 *R/attachYesNo.r
 499d7da442f5a1d096bd8306b393f792 *R/checkDateSuccession.r
@@ -29,9 +30,10 @@ a785d971c393dff2470b39585c4d4a94 *R/tableNominal.R
 4d7b51d5aad7ba3357e9122d2d126af5 *inst/CITATION
 285076a336abff7c2c95801485356f53 *inst/doc/reporttools.R
 c84106c5b72666c582416b958c191f61 *inst/doc/reporttools.Rnw
-f2b3633a9f0e2c48a3ff6f4bed520985 *inst/doc/reporttools.pdf
+21b60098c8727eaf319426de3df0c88c *inst/doc/reporttools.pdf
 fd357eeec60bfcb495db09deb97b690b *man/NAtoCategory.Rd
 6b8b45a0769cc07237382551fa482c08 *man/NAtoZero.Rd
+2af4fc266927ba9986066bf41c691192 *man/addLineBreak.Rd
 0e965f87cb837baed2307d1c511a39b9 *man/attachPresAbs.Rd
 5fd417c2beadba0b3565c26dea966ae0 *man/attachYesNo.Rd
 e08f2d9b33aa4b8991797c005f0c076a *man/checkDateSuccession.Rd
@@ -49,7 +51,7 @@ dce5e115d2f5379ee2b5fa51de69b594 *man/formatPval.Rd
 6e28d90552ee90587897d8ef328b7e22 *man/math.Rd
 3db9c47bed9ea7d2483a563850255127 *man/nominalTest.Rd
 d56fd4803d22d3fd2001f1ee4b3c38b8 *man/pairwise.fisher.test.Rd
-a86d3c8d7c7b306d410e3d12953bfcaf *man/reporttools-package.Rd
+0b716cfc8872da0f64c501ad6363ed2c *man/reporttools-package.Rd
 785611b6bb77d6b2063390a98c1c7cec *man/tableContinuous.Rd
 68831801e2b5284c677ec0d3d9833c73 *man/tableDate.Rd
 75dea23350691ef877fb05812e4a79f2 *man/tableNominal.Rd

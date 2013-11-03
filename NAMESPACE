@@ -23,7 +23,8 @@ export(tableDate,
        attachPresAbs,
        attachYesNo,
        twoGroupComparisons,
-       pairwise.fisher.test
+       pairwise.fisher.test,
+       addLineBreak
        )
 
 ## which functions from external packages do we need?

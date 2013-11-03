@@ -1,3 +1,7 @@
+reporttools_1.1.1
+---------------------------------
+- Added function addLineBreak().
+
 reporttools_1.1.0
 ---------------------------------
 - Reorganized inst/doc.
