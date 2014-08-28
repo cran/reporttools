@@ -124,7 +124,7 @@ hlines <- sort(c(0, tmp - 1, rep(tmp, each = 2)))
 ## define tabular environment
 tab.env <- "longtable"
 float <- FALSE
-if (identical(longtable, FALSE)){
+if (identical(longtable, FALSE)|identical(type, "html")){
     tab.env <- "tabular"
     float <- TRUE
 }

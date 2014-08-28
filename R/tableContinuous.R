@@ -178,7 +178,7 @@ tableContinuous <- function (vars, weights = NA, subset = NA, group = NA,
      tmp <- cumsum(rep(n.levels, n.var) + 1)
      tab.env <- "longtable"
      float <- FALSE
-     if (identical(longtable, FALSE)){
+     if (identical(longtable, FALSE)|identical(type, "html")){
           tab.env <- "tabular"
           float <- TRUE
      }
