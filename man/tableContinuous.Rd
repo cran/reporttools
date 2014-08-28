@@ -15,7 +15,7 @@ tableContinuous(vars, weights = NA, subset = NA, group = NA,
      c("none", "anova", "kruskal"), pval.bound = 10^-4, 
      declare.zero = 10^-10, cap = "", lab = "", 
      font.size = "footnotesize", longtable = TRUE, 
-     disp.cols = NA, nams = NA, ...)
+     disp.cols = NA, nams = NA, type=c("latex", "html"), ...)
 }
 \arguments{
   \item{vars}{A data frame containing continuous variables. See \code{nams} for an alternative
@@ -51,6 +51,7 @@ tableContinuous(vars, weights = NA, subset = NA, group = NA,
   \item{nams}{A vector of strings, containing the names corresponding to the variables in \code{vars}, if \code{vars}
   is not a data frame but a list of variables. These are then the names that appear in the LaTeX table.
   This option is only kept for backward compatibility.}
+  \item{type}{select the output table format}
   \item{...}{Arguments pass through to \code{print.xtable}.}
 }
 \value{Outputs the LaTeX table.}

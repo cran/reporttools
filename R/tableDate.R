@@ -6,7 +6,7 @@ tableDate <- function(vars, weights = NA, subset = NA, group = NA,
           nams = NA, type=c("latex", "html"),...){
           
   
-  type=match.args(type)
+  type=match.arg(type)
 ## for backward compatibility, we retained the argument 'disp.cols'
 if (identical(disp.cols, NA) == FALSE){stats <- disp.cols}
 
