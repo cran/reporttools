@@ -3,8 +3,10 @@ tableDate <- function(vars, weights = NA, subset = NA, group = NA,
           col.tit = NA, col.tit.font=c("bf", "", "sf", "it", "rm"),
           print.pval = TRUE, pval.bound = 10^-4, cap = "", lab = "", 
           font.size = "footnotesize", longtable = TRUE, disp.cols = NA, 
-          nams = NA, ...){
+          nams = NA, type=c("latex", "html"),...){
           
+  
+  type=match.args(type)
 ## for backward compatibility, we retained the argument 'disp.cols'
 if (identical(disp.cols, NA) == FALSE){stats <- disp.cols}
 
@@ -125,14 +127,14 @@ if (n.levels > 1){
     out2[, 2] <- rep(c(levels(group), "all"), times = n.var)
     xtab1 <- xtable::xtable(out2, align = paste("lll", align.stats, sep = ""), caption = cap, label = lab)
     xtab2 <- print(xtab1, include.rownames = FALSE, floating = float, 
-        type = "latex", hline.after = hlines, size = font.size, 
+        type = type, hline.after = hlines, size = font.size, 
         sanitize.text.function = function(x){x}, tabular.environment = tab.env, ...)}
 
 if (n.levels == 1){
     out3 <- out2[(1:n.var - 1) * 2 + 1, -2]
     xtab1 <- xtable::xtable(out3, align = paste("ll", align.stats, sep = ""), caption = cap, label = lab)
     xtab2 <- print(xtab1, include.rownames = FALSE, floating = float, 
-        type = "latex", size = font.size, sanitize.text.function = function(x){x}, tabular.environment = tab.env, ...)
+        type = type, size = font.size, sanitize.text.function = function(x){x}, tabular.environment = tab.env, ...)
 }
 
 }

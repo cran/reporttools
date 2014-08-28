@@ -1,8 +1,9 @@
 tableNominal <- function (vars, weights = NA, subset = NA, group = NA, miss.cat = NA, 
     print.pval = c("none", "fisher", "chi2"), pval.bound = 10^-4, fisher.B = 2000, 
     vertical = TRUE, cap = "", lab = "", col.tit.font = c("bf", "", "sf", "it", "rm"), 
-    font.size = "footnotesize", longtable = TRUE, nams = NA, cumsum = TRUE, ...){
+    font.size = "footnotesize", longtable = TRUE, nams = NA, cumsum = TRUE, type=c("latex", "html"),...){
 
+  type=match.arg(type)
 print.pval <- match.arg(print.pval)
 
 ## for backward compatibility, we retained the functionality of providing a list to vars and a 
@@ -137,7 +138,7 @@ if (n.group > 1){
     xtab1 <- xtable::xtable(out, digits = c(rep(0, 3), rep(digits, 
         n.group + 1)), align = al, caption = cap, label = lab)
     xtab2 <- print(xtab1, include.rownames = FALSE, floating = float, 
-        type = "latex", hline.after = hlines, size = font.size, 
+        type = type, hline.after = hlines, size = font.size, 
         sanitize.text.function = function(x){x}, 
         tabular.environment = tab.env, ...)
 }
@@ -147,7 +148,7 @@ if (n.group == 1){
     dimnames(out)[[2]] <- c(fonts$text("Variable"), fonts$text("Levels"), fonts$math(col.tit))
     xtab1 <- xtable::xtable(out, digits = c(rep(0, 3), digits), align = al, caption = cap, label = lab)
     xtab2 <- print(xtab1, include.rownames = FALSE, floating = float, 
-        type = "latex", hline.after = hlines, size = font.size,  
+        type = type, hline.after = hlines, size = font.size,  
         sanitize.text.function = function(x){x}, tabular.environment = tab.env, ...)
 }
 }
