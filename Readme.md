@@ -7,13 +7,14 @@ Functions to display descriptive statistics, and for data manipulation
 This package provides functions to generate tables of descriptive statistics for continuous and nominal variables, as well as some further data manipulation functions. The functions in this package are especially helpful when writing reports of data analysis using Sweave.
 
 ## Details ##
+|-------|--------------|
+|Package|   reporttools|
+|Type|	 Package|
+|Version|1.1.1|
+|Date|2013-11-03|
+|Depends|	 xtable, survival|
+|License|	 GPL (>=2)|
 
-Package:   reporttools
-Type:	 Package
-Version:	 1.1.1
-Date:	 2013-11-03
-Depends:	 xtable, survival
-License:	 GPL (>=2)
 At the beginning of data analysis, it is often useful to have tables of descriptive values for continuous and nominal variables available. This package provides such functions, where the output is a LaTeX table. The functions are most efficiently used when generating reports combining LaTeX with R via Sweave.
 
 ## Author(s) ##
