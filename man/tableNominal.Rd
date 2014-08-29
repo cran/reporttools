@@ -12,7 +12,7 @@ observations, per variable.
     "chi2"), pval.bound = 10^-4, fisher.B = 2000, vertical = TRUE, 
     cap = "", lab = "", col.tit.font = c("bf", "", "sf", "it", "rm"), 
     font.size = "footnotesize", longtable = TRUE, nams = NA, 
-    cumsum = TRUE, ...)}
+    cumsum = TRUE,type = c("latex", "html"), ...)}
 \arguments{
   \item{vars}{A data frame of nominal variables. See \code{nams} for an alternative
   way of specifying the variables to be displayed.}
@@ -39,7 +39,8 @@ observations, per variable.
   This option is only kept for backward compatibility.}
   \item{cumsum}{If \code{TRUE}, the cumulative sums of the percentages
     are included for every level of the grouping variable.}
-  \item{...}{Arguments pass through to \code{print.xtable}.}    
+   \item{type}{Format of table output for latex and html.}
+   \item{...}{Arguments pass through to \code{print.xtable}.}    
 }
 \value{Outputs the LaTeX table.}
 \note{If \code{longtable = TRUE} (which is the default), the function generates a table that may be more than one page 
