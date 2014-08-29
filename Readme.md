@@ -1,8 +1,5 @@
----
-title: "ReportTools"
-author: "Kaspar Rufibach"
-output: html_document
----
+# ReportTools #
+### Kaspar Rufibach ###
 Functions to display descriptive statistics, and for data manipulation
 
 ## Description ##
