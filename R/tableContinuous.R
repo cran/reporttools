@@ -3,8 +3,8 @@ tableContinuous <- function (vars, weights = NA, subset = NA, group = NA,
                              prec = 1, col.tit = NA, col.tit.font=c("bf", "", "sf", "it", "rm"),
                              print.pval = c("none", "anova", "kruskal"), pval.bound = 10^-4,  
                              declare.zero = 10^-10, cap = "", lab = "", font.size = "footnotesize", 
-                             longtable = TRUE, disp.cols = NA, nams = NA, type=c("latex", "html"),...){
-  type=match.arg(type)
+                             longtable = TRUE, disp.cols = NA, nams = NA, ...){
+     
      col.tit0 <- col.tit
      print.pval <- match.arg(print.pval)
      
@@ -178,7 +178,7 @@ tableContinuous <- function (vars, weights = NA, subset = NA, group = NA,
      tmp <- cumsum(rep(n.levels, n.var) + 1)
      tab.env <- "longtable"
      float <- FALSE
-     if (identical(longtable, FALSE)|identical(type, "html")){
+     if (identical(longtable, FALSE)){
           tab.env <- "tabular"
           float <- TRUE
      }
@@ -187,7 +187,7 @@ tableContinuous <- function (vars, weights = NA, subset = NA, group = NA,
           out3 <- out2[(1:n.var - 1) * 2 + 1, ]
           hlines <- 0
           xtab3 <- xtable::xtable(out3, align = paste(ali, align.stats, sep = ""), caption = cap, label = lab)
-          xtab4 <- print(xtab3, include.rownames = FALSE, floating = float, type = type, hline.after = hlines, 
+          xtab4 <- print(xtab3, include.rownames = FALSE, floating = float, type = "latex", hline.after = hlines, 
                          size = font.size, sanitize.text.function = function(x){x}, tabular.environment = tab.env, ...)
      }
      
@@ -196,7 +196,7 @@ tableContinuous <- function (vars, weights = NA, subset = NA, group = NA,
           hlines <- sort(c(0, tmp - 1, tmp))
           xtab1 <- xtable::xtable(out2, align = paste(ali, align.stats, sep = ""), caption = cap, label = lab)
           xtab2 <- print(xtab1, include.rownames = FALSE, floating = float, 
-                         type = type, hline.after = hlines, size = font.size, sanitize.text.function = function(x){x}, 
+                         type = "latex", hline.after = hlines, size = font.size, sanitize.text.function = function(x){x}, 
                          tabular.environment = tab.env, ...)
      }
 }

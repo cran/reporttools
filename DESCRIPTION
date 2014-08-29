@@ -5,12 +5,9 @@ Version: 1.1.1
 Date: 2013-11-03
 Author: Kaspar Rufibach
 Maintainer: Kaspar Rufibach <kaspar.rufibach@gmail.com>
-Depends:
-    xtable
-Suggests:
-    survival
-Description: The functions in this package are especially helpful when writing
-    reports of data analysis using Sweave.
+Depends: xtable
+Suggests: survival
+Description: The functions in this package are especially helpful when writing reports of data analysis using Sweave.
 License: GPL (>= 2)
 URL: http://www.kasparrufibach.ch
 Packaged: 2013-11-03 13:39:40 UTC; rufibach
