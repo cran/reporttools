@@ -13,7 +13,7 @@ tableDate(vars, weights = NA, subset = NA, group = NA,
      col.tit = NA, col.tit.font = c("bf", "", "sf", "it", "rm"),
      print.pval = TRUE, pval.bound = 10^-4, cap = "", lab = "", 
      font.size = "footnotesize", longtable = TRUE, disp.cols = NA, 
-     nams = NA, ...)
+     nams = NA,type = c("latex", "html"), ...)
 }
 \arguments{
   \item{vars}{A data frame of date variables. See \code{nams} for an alternative
@@ -39,6 +39,7 @@ tableDate(vars, weights = NA, subset = NA, group = NA,
   \item{nams}{A vector of strings, containing the names corresponding to the variables in \code{vars}, if \code{vars}
   is not a data frame but a list of variables. These are then the names that appear in the LaTeX table.
   This option is only kept for backward compatibility.}
+   \item{type}{Format of table output for latex and html.}
   \item{...}{Arguments pass through to \code{print.xtable}.}
 }
 \value{Outputs the LaTeX table.}
