@@ -7,6 +7,8 @@ Functions to display descriptive statistics, and for data manipulation
 This package provides functions to generate tables of descriptive statistics for continuous and nominal variables, as well as some further data manipulation functions. The functions in this package are especially helpful when writing reports of data analysis using Sweave.
 
 ## Details ##
+
+|  |  |
 |-------|--------------|
 |Package|   reporttools|
 |Type|	 Package|
