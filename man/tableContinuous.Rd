@@ -58,7 +58,7 @@ tableContinuous(vars, weights = NA, subset = NA, group = NA,
 long, you need to include the package longtable in the LaTeX source.
 
 If a list of variables is given to \code{vars}, not all of these variables need to be of the same length. However, 
-note the Warning below.}
+note the Warning above.}
 \author{Kaspar Rufibach (maintainer), \email{kaspar.rufibach@gmail.com}, \cr \url{http://www.kasparrufibach.ch}}
 \references{
 Rufibach, K. (2009) 

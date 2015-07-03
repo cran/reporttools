@@ -19,7 +19,7 @@ displayKbyC(v1, v2, percentage = c("none", "row", "col",
   \item{row.nam}{Labels of \code{v1} to be given as row names.}
   \item{col.nam}{Labels of \code{v2} to be given as column names.}
 }
-\value{Returns a LaTeX K x C table.}
+\value{Returns a LaTeX K x C table, together with the resulting computations. If you use this function in an .rnw file, you need to assign it to a (dummy) variable name in order for the results beyond the LaTeX table not to appear in the .tex file.}
 \author{Kaspar Rufibach (maintainer), \email{kaspar.rufibach@gmail.com}, \cr \url{http://www.kasparrufibach.ch}}
 \examples{
 set.seed(1977)

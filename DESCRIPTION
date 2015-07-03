@@ -1,16 +1,17 @@
 Package: reporttools
 Type: Package
-Title: Generate LaTeX tables of descriptive statistics
-Version: 1.1.1
-Date: 2013-11-03
+Title: Generate LaTeX Tables of Descriptive Statistics
+Version: 1.1.2
+Date: 2015-07-03
 Author: Kaspar Rufibach
 Maintainer: Kaspar Rufibach <kaspar.rufibach@gmail.com>
 Depends: xtable
+Imports: stats
 Suggests: survival
-Description: The functions in this package are especially helpful when writing reports of data analysis using Sweave.
+Description: These functions are especially helpful when writing reports of data analysis using Sweave.
 License: GPL (>= 2)
 URL: http://www.kasparrufibach.ch
-Packaged: 2013-11-03 13:39:40 UTC; rufibach
+Packaged: 2015-07-04 12:31:58 UTC; rufibach
 NeedsCompilation: no
 Repository: CRAN
-Date/Publication: 2013-11-06 21:00:42
+Date/Publication: 2015-07-04 15:23:16

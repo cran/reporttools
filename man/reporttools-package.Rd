@@ -2,18 +2,18 @@
 \alias{reporttools-package}
 \alias{reporttools}
 \docType{package}
-\title{Functions to display descriptive statistics, and for data manipulation}
+\title{Generate LaTeX Tables of Descriptive Statistics}
 \description{
-This package provides functions to generate tables of descriptive statistics for continuous and nominal variables,
-as well as some further data manipulation functions. The functions in this package are especially helpful when 
+Provides functions to generate tables of descriptive statistics for continuous and nominal variables,
+as well as some further data manipulation functions. These functions are especially helpful when 
 writing reports of data analysis using Sweave.
 }
 \details{
 \tabular{ll}{
 Package: \tab reporttools\cr
 Type: \tab Package\cr
-Version: \tab 1.1.1\cr
-Date: \tab 2013-11-03\cr
+Version: \tab 1.1.2\cr
+Date: \tab 2015-07-03\cr
 Depends: \tab xtable, survival \cr
 License: \tab GPL (>=2) \cr
 }

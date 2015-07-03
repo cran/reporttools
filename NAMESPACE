@@ -28,5 +28,5 @@ export(tableDate,
        )
 
 ## which functions from external packages do we need?
-importFrom(xtable,
-           xtable)
+importFrom(stats, anova, chisq.test, complete.cases, fisher.test, kruskal.test, lm, median, pairwise.table, quantile, sd, t.test, wilcox.test)
+importFrom(xtable, xtable)
