@@ -64,7 +64,7 @@ note the Warning above.}
 Rufibach, K. (2009) 
 reporttools: R-Functions to Generate LaTeX Tables of Descriptive Statistics.
 Journal of Statistical Software, Code Snippets, 31(1). \cr
-\url{http://www.jstatsoft.org/v31/c01}.
+\doi{https://doi.org/10.18637/jss.v031.c01}.
 }
 \section{Warning}{If either one of the arguments \code{group}, \code{weights}, or \code{subset} is different from \code{NA}
 and if \code{vars} is a list, then it is assumed that all variables 

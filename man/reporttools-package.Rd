@@ -12,8 +12,8 @@ writing reports of data analysis using Sweave.
 \tabular{ll}{
 Package: \tab reporttools\cr
 Type: \tab Package\cr
-Version: \tab 1.1.2\cr
-Date: \tab 2015-07-03\cr
+Version: \tab 1.1.3\cr
+Date: \tab 2021-10-10\cr
 Depends: \tab xtable, survival \cr
 License: \tab GPL (>=2) \cr
 }
@@ -29,7 +29,7 @@ I thank Daniel Sabanes-Bove, Sarah Haile, Philipp Muri, Patrich McCormick, and S
 Rufibach, K. (2009) 
 reporttools: R-Functions to Generate LaTeX Tables of Descriptive Statistics.
 Journal of Statistical Software, Code Snippets, 31(1). \cr
-\url{http://www.jstatsoft.org/v31/c01}.
+\doi{https://doi.org/10.18637/jss.v031.c01}.
 }
 \keyword{manip}
 \keyword{character}

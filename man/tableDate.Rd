@@ -57,7 +57,7 @@ in \code{vars} are of \emph{equal length}.
 Rufibach, K. (2009) 
 reporttools: R-Functions to Generate LaTeX Tables of Descriptive Statistics.
 Journal of Statistical Software, Code Snippets, 31(1). \cr
-\url{http://www.jstatsoft.org/v31/c01}.
+\doi{https://doi.org/10.18637/jss.v031.c01}.
 }
 \examples{
 set.seed(1977)

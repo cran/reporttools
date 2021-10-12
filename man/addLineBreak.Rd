@@ -17,6 +17,7 @@ tab[3, 2] <- paste(LETTERS, sep = "", collapse = "")
 tab[c(2, 4), 2] <- ""
 colnames(tab) <- c("nr", "text")
 
+tab
 addLineBreak(tab, length = 12, col = 2)
 }
 
