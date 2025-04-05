@@ -1,9 +1,10 @@
 Package: reporttools
 Type: Package
 Title: Generate "LaTeX"" Tables of Descriptive Statistics
-Version: 1.1.3
-Date: 2021-10-10
-Author: Kaspar Rufibach
+Version: 1.1.4
+Date: 2025-05-04
+Authors@R: 
+    c(person(given = "Kaspar", family = "Rufibach", role = c("aut", "cre"), email = "kaspar.rufibach@gmail.com"))
 Maintainer: Kaspar Rufibach <kaspar.rufibach@gmail.com>
 Depends: xtable
 Imports: stats
@@ -12,6 +13,7 @@ Description: These functions are especially helpful when writing reports of data
 License: GPL (>= 2)
 URL: http://www.kasparrufibach.ch
 NeedsCompilation: no
-Packaged: 2021-10-12 15:48:40 UTC; rufiback
+Packaged: 2025-04-05 18:09:58 UTC; kaspa
+Author: Kaspar Rufibach [aut, cre]
 Repository: CRAN
-Date/Publication: 2021-10-12 16:10:02 UTC
+Date/Publication: 2025-04-05 18:20:02 UTC

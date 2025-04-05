@@ -8,7 +8,7 @@
 \item{length}{Maximal length to which strings should be broken.}
 \item{col}{Column of \code{tab} that contains strings.}
 }
-\value{List with two elements: The resulting dataframe with lines broken, and a vector that gives row where each entry in the new dataframe ends. The latter is useful when horizontal lines should be added when using \link{xtable}.}
+\value{List with two elements: The resulting dataframe with lines broken, and a vector that gives row where each entry in the new dataframe ends. The latter is useful when horizontal lines should be added when using \link[xtable]{xtable}.}
 \author{Kaspar Rufibach (maintainer), \email{kaspar.rufibach@gmail.com}, \cr \url{http://www.kasparrufibach.ch}}
 \examples{
 tab <- data.frame(cbind(1:4))
